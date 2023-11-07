@@ -1,0 +1,108 @@
+/* VARIABLES */
+$--total-width: 100%;
+$--header-horizontal-padding: 3vw;
+
+$--bar-width-mob: 5vh;
+$--bar-height-mob: 0.8vh;
+$--hamburguer-gap-mob: 6px;
+$--foreground-bar: #F7F200;
+$--animation-timing: 200ms ease-in-out;
+
+$--min-height-mob: 10vh;
+$--background-header: white;
+
+/* ESTRUCTURAS */
+header{
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    width: $--total-width;
+    .hamburger-menu{
+        display: flex;
+        flex-direction: column;
+        gap: $--hamburguer-gap-mob;
+        &::before, &::after, & input {
+            content: "";
+            border-radius: 12px;
+        }
+        & input {
+            padding: 0;
+            margin: 0;    
+            &:checked{
+                /* 
+                   Defino el width a 0 para desaparecer la barra central,
+                   aplicando la animacion ease-in-out para hacerlo smooth
+                */
+                width: 0;
+            }   
+        }
+    } 
+    .sidebar{
+        position: absolute;
+        top: $--min-height-mob;
+        right: 100vw;
+        width: 100vw;
+        height: 90vh;
+    }
+}
+
+/* ESTILOS */
+header{
+    background-color: $--background-header;
+    padding: {
+        right: $--header-horizontal-padding;
+        left: $--header-horizontal-padding;
+    }
+    img{
+        height: 8vh;
+    }
+    .hamburger-menu{
+        &::before, &::after, & input {
+            background-color: $--foreground-bar;
+            transition: opacity $--animation-timing, width $--animation-timing;
+            transform-origin: left center;
+        }
+        &:has(input:checked){
+            & + .sidebar{
+                transition: 200ms;
+                right: 0;
+            }
+            &::before{
+                rotate: 45deg;
+            }
+            &::after{
+                rotate: -45deg;
+            }
+        }
+        & input {
+            appearance: none;
+            outline: none;
+            pointer-events: none;
+            &:checked{
+                /* Hago desaparecer la barra central que es el input check*/
+                opacity: 0;
+            }
+        }
+    } 
+    .sidebar{
+        transition: 200ms;
+        transition: translate $--animation-timing;   
+        background-color: grey;
+    }
+}
+
+/* MEDIAS */
+@media only screen and (max-width: 430px){
+    header{
+        min-height: $--min-height-mob;
+        .hamburger-menu{
+            &::before, &::after, & input {   
+                width: $--bar-width-mob;
+                height: $--bar-height-mob;
+            }
+        }
+    }
+}
