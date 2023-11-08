@@ -1,11 +1,20 @@
 <header>
     <img src="assets/images/logo.png" alt="MagusDevLogo">
-    <label class="hamburger-menu">
-        <ion-icon name="menu-outline"></ion-icon>
+    <label (click)="shouldBeOpened ? openHambMenu('.sidebar') : null" class="hamburger-menu">
+        <ion-icon name="{{hamburguerOpen ? 'close-outline' : 'menu-outline'}}"></ion-icon>
     </label>
     <aside class="sidebar">
         <nav>
-            <div>Hola</div>
+            <button>Inicio</button>
+            <button>Proyectos</button>
+            <button>Contacto</button>
+            <button>Referencias</button>
+            <div>
+                <button><ion-icon name="logo-github"></ion-icon></button>
+                <button><ion-icon name="logo-whatsapp"></ion-icon></button>
+                <button><ion-icon name="logo-discord"></ion-icon></button>
+                <button><ion-icon name="logo-linkedin"></ion-icon></button>
+            </div>
         </nav>
     </aside>
 </header>

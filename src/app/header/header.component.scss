@@ -1,6 +1,7 @@
 /* VARIABLES */
 $--total-width: 100%;
 $--header-horizontal-padding: 3vw;
+$--zero-value: 0;
 
 $--bar-width-mob: 5vh;
 $--bar-height-mob: 100%;
@@ -10,32 +11,60 @@ $--animation-timing: 200ms ease-in-out;
 
 $--min-height-mob: 10vh;
 $--background-header: white;
+/* MIXINS & PLACEHOLDERS*/
+//Placeholders para prevenir el repetir displays y demas.
+%displayFlex{
+    display: flex;
+}
+%flexColumnNowrap {
+    display: flex;
+    flex-flow: column nowrap;
+}
+%flexRowNowrap{
+    display: flex;
+    flex-flow: row nowrap;
+}
+%flexColumnWrap {
+    display: flex;
+    flex-flow: column wrap;
+}
+%flexRowWrap{
+    display: flex;
+    flex-flow: row wrap;
+}
+%centeredContent{
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flexColumnNowrap{
+    flex-flow: column nowrap;
+}
+
 
 /* ESTRUCTURAS */
 header{
     position: sticky;
     top: 0;
-    display: flex;
-    flex-flow: row nowrap;
+    @extend %flexRowNowrap;
     align-items: center;
     justify-content: space-between;
     width: $--total-width;
     .hamburger-menu{
-        display: flex;
-        flex-direction: column;
+        @extend %flexColumnNowrap;
         justify-content: center;
         align-items: center;
-        & input {
-            padding: 0;
-            margin: 0;    
-        }
     } 
     .sidebar{
+        @extend %displayFlex, %centeredContent;
         position: absolute;
-        top: $--min-height-mob;
-        right: 100vw;
-        width: 100vw;
-        height: 90vh;
+        nav{
+            @extend %flexColumnNowrap;
+            div{
+                @extend %flexRowNowrap;
+                justify-content: space-evenly;
+            }
+        }
     }
 }
 
@@ -49,27 +78,19 @@ header{
     img{
         height: 8vh;
     }
-    .hamburger-menu{
-        &::before, &::after, & input {
-            background-color: $--foreground-bar;
-            transform-origin: left center;
-        }
-        &:has(input:checked){
-            & + .sidebar{
-                transition: 200ms;
-                right: 0;
-            }
-        }
-        & input {
-            appearance: none;
-            outline: none;
-            pointer-events: none;
-        }
-    } 
     .sidebar{
+        @include flexColumnNowrap();
         transition: 200ms;
         transition: translate $--animation-timing;   
         background-color: grey;
+        z-index: 2;
+        nav{
+            button{
+                font-family: 'Tilt Warp', sans-serif;           
+                border: none;
+                background-color: transparent;
+            }
+        }
     }
 }
 
@@ -81,7 +102,31 @@ header{
             height: $--bar-height-mob;
             width: $--bar-width-mob;
             ion-icon{
-                font-size: 5vh;
+                font-size: $--bar-width-mob;
+            }
+        }
+        .sidebar{
+            top: $--min-height-mob;
+            right: 100vw;
+            width: 100vw;
+            height: 90vh;
+            nav{
+                width: 75%;
+                & > button{
+                    padding: 0;
+                    z-index: 1;
+                    margin: {
+                        bottom: 10%;
+                    }
+                    font-size: $--bar-width-mob;
+                    &::before{
+                    }
+                }
+                div {
+                    button{
+                        font-size: $--bar-width-mob;
+                    }
+                }
             }
         }
     }
