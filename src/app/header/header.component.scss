@@ -1,9 +1,13 @@
+/*MAPAS*/
+$mapaRedesColors: ( 1: white,2: #2BB741,3: #5865F2, 4: #0A66C2); 
 /* VARIABLES */
 $--total-width: 100%;
 $--header-horizontal-padding: 3vw;
 $--zero-value: 0;
 
-$--bar-width-mob: 5vh;
+$--transision-hover-time: 200ms;
+// $--bar-width-mob: 5vh;
+$--bar-width-mob: 2.5em;
 $--bar-height-mob: 100%;
 $--hamburguer-gap-mob: 6px;
 $--foreground-bar: #F7F200;
@@ -11,6 +15,7 @@ $--animation-timing: 200ms ease-in-out;
 
 $--min-height-mob: 10vh;
 $--background-header: white;
+
 /* MIXINS & PLACEHOLDERS*/
 //Placeholders para prevenir el repetir displays y demas.
 %displayFlex{
@@ -60,6 +65,7 @@ header{
         position: absolute;
         nav{
             @extend %flexColumnNowrap;
+            align-items: center;
             div{
                 @extend %flexRowNowrap;
                 justify-content: space-evenly;
@@ -80,9 +86,9 @@ header{
     }
     .sidebar{
         @include flexColumnNowrap();
-        transition: 200ms;
+        transition: $--transision-hover-time;
         transition: translate $--animation-timing;   
-        background-color: grey;
+        background-color: #FDD02E;
         z-index: 2;
         nav{
             button{
@@ -95,15 +101,39 @@ header{
 }
 
 /* MEDIAS */
-@media only screen and (max-width: 430px){
+
+/* Header bar responsive until arrive PC */
+
+@media only screen and (max-width: 1024px){
+
+}
+
+/* Smurf phones */
+@media only screen and (max-width: 206px){
     header{
+        .sidebar{
+            nav{
+                & > button {
+                    font-size: $--bar-width-mob - 1.5 !important; //Quitar important
+                }
+                div {
+                    button {
+                        font-size: $--bar-width-mob - 1 !important; //Quitar important
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Any mobile device */
+@media only screen and (max-width: 600px){ //Deberia set 600px
+    header{
+        /* ESTRUCTURA */
         height: $--min-height-mob;
         .hamburger-menu{
             height: $--bar-height-mob;
             width: $--bar-width-mob;
-            ion-icon{
-                font-size: $--bar-width-mob;
-            }
         }
         .sidebar{
             top: $--min-height-mob;
@@ -114,20 +144,59 @@ header{
                 width: 75%;
                 & > button{
                     padding: 0;
-                    z-index: 1;
                     margin: {
-                        bottom: 10%;
+                        bottom: $--bar-width-mob - 2;
                     }
-                    font-size: $--bar-width-mob;
-                    &::before{
+                    width: 100%;  
+                    &:hover, &:focus {
+                        margin: {
+                            bottom: $--bar-width-mob - 1.5;
+                        };
+                    }       
+                }
+                div {
+                    width: 100%;
+                    max-width: 207px;
+                }
+            }
+        }
+
+        /* ESTILOS */
+        .hamburger-menu{
+            ion-icon{
+                font-size: $--bar-width-mob;
+            }
+        }
+
+        .sidebar{
+            nav{
+                & > button{
+                    font-size: $--bar-width-mob - 0.5;
+                    border-bottom: 0.5vh solid transparent;
+                    transition-duration: $--transision-hover-time;
+                    &:hover, &:focus {
+                        border-color: white;
+                        color: white;
+                        font-size: $--bar-width-mob - 0.7;
                     }
                 }
                 div {
+                    @for $i from 1 to 5 {
+                        button:nth-child(#{$i}):hover, button:nth-child(#{$i}):focus{      
+                            color: map-get($mapaRedesColors, $i);
+                        }
+                    }
                     button{
+                        transition-duration: $--transision-hover-time;
                         font-size: $--bar-width-mob;
                     }
                 }
             }
         }
     }
+}
+
+/* tablets */
+@media only screen and (max-width: 992px){
+
 }
