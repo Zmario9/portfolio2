@@ -1,7 +1,7 @@
 <header>
     <img src="assets/images/logo.png" alt="MagusDevLogo">
-    <label (click)="shouldBeOpened ? openHambMenu('.sidebar') : null" class="hamburger-menu">
-        <ion-icon name="{{hamburguerOpen ? 'close-outline' : 'menu-outline'}}"></ion-icon>
+    <label class="hamburger-menu">
+        <ion-icon (click)="shouldBeOpened ? openHambMenu('.sidebar') : null" name="{{hamburguerOpen ? 'close-outline' : 'menu-outline'}}"></ion-icon>
     </label>
     <aside class="sidebar">
         <nav>
@@ -18,3 +18,6 @@
         </nav>
     </aside>
 </header>
+<main style="width: 100%; height: 300vh">
+
+</main>

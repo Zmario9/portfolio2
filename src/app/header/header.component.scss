@@ -12,6 +12,7 @@ $--bar-height-mob: 100%;
 $--hamburguer-gap-mob: 6px;
 $--foreground-bar: #F7F200;
 $--animation-timing: 200ms ease-in-out;
+$--border-bott-mob: 0.5vh;
 
 $--min-height-mob: 10vh;
 $--background-header: white;
@@ -66,9 +67,15 @@ header{
         nav{
             @extend %flexColumnNowrap;
             align-items: center;
+            & > button {
+                width: 100%; 
+            }
             div{
                 @extend %flexRowNowrap;
                 justify-content: space-evenly;
+                button {
+                    
+                }
             }
         }
     }
@@ -95,6 +102,21 @@ header{
                 font-family: 'Tilt Warp', sans-serif;           
                 border: none;
                 background-color: transparent;
+                transition-duration: $--transision-hover-time;
+                &:hover, &:focus {
+                    border-color: white;
+                    color: white;
+                }
+            }
+            div{
+                button{
+                    transition-duration: $--transision-hover-time;
+                }
+                @for $i from 1 to 5 {
+                    button:nth-child(#{$i}):hover, button:nth-child(#{$i}):focus{      
+                        color: map-get($mapaRedesColors, $i);
+                    }
+                }
             }
         }
     }
@@ -104,12 +126,28 @@ header{
 
 /* Header bar responsive until arrive PC */
 
-@media only screen and (max-width: 1024px){
+@media screen and (max-width: 1024px){
+    /* ESTRUCTURA */
+    header {
+        height: $--min-height-mob;
+        .hamburger-menu{
+            height: $--bar-height-mob;
+            width: $--bar-width-mob;
+        }
+    }
 
+    /* ESTILO */ 
+    header {
+        .hamburger-menu {
+            ion-icon{
+                font-size: $--bar-width-mob;
+            }
+        }
+    }
 }
 
 /* Smurf phones */
-@media only screen and (max-width: 206px){
+@media screen and (max-width: 206px){
     header{
         .sidebar{
             nav{
@@ -127,14 +165,9 @@ header{
 }
 
 /* Any mobile device */
-@media only screen and (max-width: 600px){ //Deberia set 600px
+@media screen and (max-width: 600px){ //Deberia set 600px
     header{
         /* ESTRUCTURA */
-        height: $--min-height-mob;
-        .hamburger-menu{
-            height: $--bar-height-mob;
-            width: $--bar-width-mob;
-        }
         .sidebar{
             top: $--min-height-mob;
             right: 100vw;
@@ -147,7 +180,7 @@ header{
                     margin: {
                         bottom: $--bar-width-mob - 2;
                     }
-                    width: 100%;  
+                    // width: 100%;  
                     &:hover, &:focus {
                         margin: {
                             bottom: $--bar-width-mob - 1.5;
@@ -162,32 +195,17 @@ header{
         }
 
         /* ESTILOS */
-        .hamburger-menu{
-            ion-icon{
-                font-size: $--bar-width-mob;
-            }
-        }
-
         .sidebar{
             nav{
                 & > button{
                     font-size: $--bar-width-mob - 0.5;
-                    border-bottom: 0.5vh solid transparent;
-                    transition-duration: $--transision-hover-time;
+                    border-bottom: $--border-bott-mob solid transparent;
                     &:hover, &:focus {
-                        border-color: white;
-                        color: white;
                         font-size: $--bar-width-mob - 0.7;
                     }
                 }
                 div {
-                    @for $i from 1 to 5 {
-                        button:nth-child(#{$i}):hover, button:nth-child(#{$i}):focus{      
-                            color: map-get($mapaRedesColors, $i);
-                        }
-                    }
                     button{
-                        transition-duration: $--transision-hover-time;
                         font-size: $--bar-width-mob;
                     }
                 }
@@ -195,8 +213,46 @@ header{
         }
     }
 }
-
-/* tablets */
-@media only screen and (max-width: 992px){
-
+@media screen and (min-width:600px) and (max-width: 992px){
+    /* ESTRUCTURA */
+    header {
+        .sidebar{
+            height: 35vh;
+            // top: 65vh;
+            top: 100vh;
+            left: 0;
+            right: 0;
+            nav{
+                height: 100%;
+                width: 40vw;
+                max-width: 30vw;
+                & > button {
+                    border-bottom: $--border-bott-mob - 0.1 solid transparent;   
+                }
+                div {
+                    width: 100%;
+                    max-width: 200px;
+                    button{
+                        font-size: $--bar-width-mob;  
+                        display: flex;
+                        align-items: center;  
+                    }
+                }
+            }
+        }
+    }
+    /* ESTILOS */
+    header {
+        .sidebar{
+            nav{
+                justify-content: space-evenly;
+                & > button {
+                    font-size: $--bar-width-mob - 0.5;
+                    &:hover, &:focus {
+                        font-size: $--bar-width-mob - 0.7;
+                    }     
+                }
+            }
+        }
+    }
 }
