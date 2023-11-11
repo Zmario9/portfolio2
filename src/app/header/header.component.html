@@ -1,23 +1,35 @@
 <header>
-    <img src="assets/images/logo.png" alt="MagusDevLogo">
-    <label class="hamburger-menu">
-        <ion-icon (click)="shouldBeOpened ? openHambMenu('.sidebar') : null" name="{{hamburguerOpen ? 'close-outline' : 'menu-outline'}}"></ion-icon>
-    </label>
-    <aside class="sidebar">
-        <nav>
-            <button>Inicio</button>
-            <button>Proyectos</button>
-            <button>Contacto</button>
-            <button>Referencias</button>
+    <div>
+        <img src="assets/images/logo.png" alt="MagusDevLogo">
+        <label *ngIf="currentWinSize < winTablet" class="hamburger-menu">
+            <ion-icon (click)="shouldBeOpened ? openHambMenu('.sidebar') : null" name="{{hamburguerOpen ? 'close-outline' : 'menu-outline'}}"></ion-icon>
+        </label>
+        <aside *ngIf="currentWinSize < winTablet" class="sidebar">
+            <nav>
+                <button *ngFor="let icons1 of iconList; let i = index;">
+                    <ion-icon name="{{icons1.iconoMenu}}"></ion-icon>
+                    {{icons1.nombre}}
+                </button>
+                <div>
+                    <button *ngFor="let icons2 of iconSocialList; let i = index">
+                        <ion-icon name="{{icons2.socialLogo}}"></ion-icon>
+                    </button>
+                </div>
+            </nav>
+        </aside>
+        <nav *ngIf="currentWinSize > winTablet">
+            <button *ngFor="let icons1 of iconList; let i = index;">
+                <ion-icon name="{{icons1.iconoMenu}}"></ion-icon>
+                {{icons1.nombre}}
+            </button>
             <div>
-                <button><ion-icon name="logo-github"></ion-icon></button>
-                <button><ion-icon name="logo-whatsapp"></ion-icon></button>
-                <button><ion-icon name="logo-discord"></ion-icon></button>
-                <button><ion-icon name="logo-linkedin"></ion-icon></button>
+                <button *ngFor="let icons2 of iconSocialList; let i = index">
+                    <ion-icon name="{{icons2.socialLogo}}"></ion-icon>
+                </button>
             </div>
         </nav>
-    </aside>
+    </div>
 </header>
-<main style="width: 100%; height: 300vh">
+<!-- <main style="width: 100%; height: 300vh">
 
-</main>
+</main> -->
