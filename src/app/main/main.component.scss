@@ -132,6 +132,11 @@ main {
           button{
             color: white;
             background-color: yellow;
+            text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black,
+            1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+            font-family: "Kanit", sans-serif;
+            border: 5px solid black; 
+            border-radius: 25px;
           }
           h3, p{
             color: white;
@@ -205,9 +210,7 @@ main {
                 }
               }
             }
-            button{
-              border-radius: 25px;
-            }
+
           }
         }
       }
@@ -276,10 +279,6 @@ main {
             button {
               font-weight: bold;
               font-size: 1.2em;
-              text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black,
-               1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
-              font-family: "Kanit", sans-serif;
-              border: 5px solid black;
             }
           }
         }
@@ -300,6 +299,16 @@ main {
 
 @media screen and (min-width: 600px) and (max-width: 992px) {
   main {
+    #firstContainer {
+      flex-flow: row nowrap;
+    }
+    #secondContainer, #thirdContainer{
+      flex-flow: column nowrap;
+    }
+    #thirdContainer{
+      align-items: center;
+    }
+
     article {
       &:nth-child(2){
         h1{ 
@@ -309,7 +318,6 @@ main {
           }
         }
       }
-      flex-flow: row nowrap;
       div:nth-child(1),
       div:nth-child(2) {
         flex-flow: column nowrap;
