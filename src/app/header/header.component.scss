@@ -80,6 +80,7 @@ header{
         justify-content: space-between;
         align-items: center;
         width: $--total-width;
+        height: 75%;
         max-width: 1300px;
         .hamburger-menu{
             @extend %flexColumnNowrap;
@@ -121,7 +122,7 @@ header{
         left: $--header-horizontal-padding;
     }
     img{
-        height: 8vh;
+        height: 100%;
         border-radius: 50%;
     }
     .sidebar{
@@ -163,6 +164,8 @@ header{
     /* ESTRUCTURA */
     header {
         height: $--min-height-mob;
+        min-height: 60px;
+        max-height: 100px;
         .hamburger-menu{
             height: $--bar-height-mob;
             width: $--bar-width-mob;
@@ -206,6 +209,7 @@ header{
             right: 100vw;
             width: 100vw;
             height: 90vh;
+            min-height: 292px;
             nav{
                 width: 75%;
                 & > button{
@@ -252,19 +256,24 @@ header{
         .sidebar{
             height: 35vh;
             // top: 65vh;
+            min-height: 292px;
             top: 100vh;
             left: 0;
             right: 0;
             nav{
-                height: 100%;
+                height: 80%;
                 width: 40vw;
                 max-width: 50vw;
                 & > button {
-                    border-bottom: $--border-bott-mob - 0.1 solid transparent;   
+                    border-bottom: $--border-bott-mob - 0.1 solid transparent;  
+                    margin: {
+                        bottom: 0.5em;
+                    } 
                 }
                 div {
                     width: 100%;
-                    max-width: 200px;
+                    max-width: 20vh;
+                    height: 10%;
                     button{
                         font-size: $--bar-width-mob;  
                         display: flex;

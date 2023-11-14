@@ -4,7 +4,7 @@
             <h1>Programador Junior FrontEnd.</h1>
             <img src="assets/images/whoIAm.jpg" alt="">
         </div>
-        <div>
+        <div class="contentOneText colorAzul">
             <h1>Introducción</h1>
             <p>
                 ¡Hola!, soy José Manuel Correa Castro, y soy 
@@ -21,10 +21,31 @@
             </p>
         </div> 
     </article>
-    <article>
+    <article id="secondContainer">
         <h1>Tecnologías conocidas</h1>
         <div>
-            
+            <div class="knowledges" *ngFor="let knows of conocimientos; let i = index">
+                <h1>{{knows.nombre}}</h1>
+                <img [src]="knows.src" [alt]="knows.nombre">
+            </div>
+        </div>
+    </article>
+    <article id="thirdContainer">
+        <h1>Proyectos</h1>
+        <div>
+            <div class="projects" *ngFor="let project of projects;">
+                <img [src]="project.src" [alt]="project.titulo">
+                <div class="descriptionPart">
+                    <h3>{{project.titulo}}</h3>
+                    <p>{{project.description}}</p>
+                    <div class="technologyTags">
+                        <span *ngFor="let tech of project.technologies;">
+                            {{tech}}
+                        </span>
+                    </div>
+                    <button></button>
+                </div>
+            </div>
         </div>
     </article>
 </main>

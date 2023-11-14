@@ -1,7 +1,7 @@
 <header>
     <div>
         <img src="assets/images/logo.png" alt="MagusDevLogo">
-        <label *ngIf="currentWinSize < winTablet" class="hamburger-menu">
+        <label *ngIf="currentWinSize <= winTablet" class="hamburger-menu">
             <ion-icon (click)="shouldBeOpened ? openHambMenu('.sidebar') : null" name="{{hamburguerOpen ? 'close-outline' : 'menu-outline'}}"></ion-icon>
         </label>
         <aside *ngIf="currentWinSize < winTablet" class="sidebar">

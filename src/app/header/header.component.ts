@@ -63,10 +63,17 @@ export class HeaderComponent {
           "left": "0"
         });
       }
+      if (window.innerHeight < 691){
+        $(".sidebar").css("display", "none");
+      }
+       else {
+        $(".sidebar").css("display", "flex"); 
+       }
     });
   }
 
   openHambMenu(event: string) {
+    $(".sidebar").css("display", "flex"); 
     if(window.innerWidth < 600){
       //MOBILES
       if (!this.hamburguerOpen) {
