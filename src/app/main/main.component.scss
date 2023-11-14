@@ -62,6 +62,26 @@ main {
       flex-flow: row wrap;
       justify-content: center;
       .projects {
+        display: flex;
+        flex-flow: nowrap column;
+          max-width: 300px;
+          max-height: 400px;
+        .descriptionPart{
+          display: flex;
+          flex-flow: nowrap column; 
+          align-items: center;
+          .technologyTags {
+            width: 100%;
+          }
+          button{ 
+            min-width: 80%;
+            min-height: 50px;
+            margin: {
+              bottom: 2%;
+              top: 2%;   
+            }
+          }       
+        }
         p {
           max-height: 95px;
         }
@@ -109,6 +129,10 @@ main {
           }
         }
         .descriptionPart{
+          button{
+            color: white;
+            background-color: yellow;
+          }
           h3, p{
             color: white;
           }
@@ -149,7 +173,9 @@ main {
         width: 100%;
         .projects{
           width: 100%;
-          max-width: 300px;
+          margin: {
+            bottom: 0.5em;
+          }
           img{
             width:100%;
             max-height: 145px;
@@ -179,10 +205,14 @@ main {
                 }
               }
             }
+            button{
+              border-radius: 25px;
+            }
           }
         }
       }
     }
+
     article {
       flex-flow: column nowrap;
       &:nth-child(2){
@@ -242,6 +272,14 @@ main {
                 font-size: .9em;
                 color: white;
               }
+            }
+            button {
+              font-weight: bold;
+              font-size: 1.2em;
+              text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black,
+               1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+              font-family: "Kanit", sans-serif;
+              border: 5px solid black;
             }
           }
         }

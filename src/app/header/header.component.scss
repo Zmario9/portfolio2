@@ -17,6 +17,7 @@ $--border-bott-mob: 0.5vh;
 
 $--min-height-mob: 10vh;
 $--background-header: white;
+$--hover-blue: #0A66C2;
 
 /* MIXINS & PLACEHOLDERS*/
 
@@ -133,7 +134,7 @@ header{
         z-index: 2;
         nav{
             button{
-                @include smooth-buttons($--background-header);
+                @include smooth-buttons($--hover-blue);
             }
             div{
                 button{
@@ -145,7 +146,7 @@ header{
     }
     nav {
         button{
-            @include smooth-buttons($--background-header);
+            @include smooth-buttons($--hover-blue);
             @extend %displayFlex,%centeredContent;
             cursor: pointer;
         }
