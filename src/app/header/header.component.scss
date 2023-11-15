@@ -76,6 +76,7 @@ header{
     align-items: center;
     justify-content: center;
     width: $--total-width;
+    z-index: 9;
     div{
         @extend %flexRowNowrap;
         justify-content: space-between;
