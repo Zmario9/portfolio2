@@ -1,6 +1,17 @@
 /*MAPAS*/
 $mapaRedesColors: ( 1: white,2: #2BB741,3: #5865F2, 4: #0A66C2); 
 /* VARIABLES */
+/* Colores */
+$--color-primario-header: #0E0A19;
+$--color-secundario-header: #4121A0;
+$--color-terciario-header: #7142F0;
+
+// $--color-secundario-header: rgba(247, 242, 0);
+$--foreground-bar-transparent: rgba(247, 242, 0, 0.8);
+$--background-header: white;
+$--hover-blue: #0A66C2;
+
+/* Estructuras */
 $--total-width: 100%;
 $--header-horizontal-padding: 3vw;
 $--zero-value: 0;
@@ -10,14 +21,11 @@ $--transision-hover-time: 200ms;
 $--bar-width-mob: 2.5em;
 $--bar-height-mob: 100%;
 $--hamburguer-gap-mob: 6px;
-$--foreground-bar: rgba(247, 242, 0);
-$--foreground-bar-transparent: rgba(247, 242, 0, 0.8);
+
 $--animation-timing: 200ms ease-in-out;
 $--border-bott-mob: 0.5vh;
 
 $--min-height-mob: 10vh;
-$--background-header: white;
-$--hover-blue: #0A66C2;
 
 /* MIXINS & PLACEHOLDERS*/
 
@@ -118,7 +126,10 @@ header{
 
 /* ESTILOS */
 header{
-    background-color: $--foreground-bar;
+    background-color: $--color-primario-header;
+    border: {
+        bottom: 1px solid $--color-secundario-header;
+    }
     padding: {
         right: $--header-horizontal-padding;
         left: $--header-horizontal-padding;
@@ -127,19 +138,25 @@ header{
         height: 100%;
         border-radius: 50%;
     }
+    label{
+        ion-icon {
+            color: $--color-secundario-header;
+        }
+    }
     .sidebar{
         @include flexColumnNowrap();
         transition: $--transision-hover-time;
         transition: translate $--animation-timing;   
-        background-color: $--foreground-bar;
+        background-color: $--color-primario-header;
         z-index: 2;
         nav{
             button{
-                @include smooth-buttons($--hover-blue);
+                @include smooth-buttons($--color-terciario-header);
+                color: $--color-secundario-header;
             }
             div{
                 button{
-                    transition-duration: $--transision-hover-time;
+                    transition-duration: $--transision-hover-time; 
                 }
                 @include smooth-social-links();
             }
@@ -147,7 +164,8 @@ header{
     }
     nav {
         button{
-            @include smooth-buttons($--hover-blue);
+            @include smooth-buttons($--color-terciario-header);
+            color: $--color-secundario-header;
             @extend %displayFlex,%centeredContent;
             cursor: pointer;
         }

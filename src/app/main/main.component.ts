@@ -132,5 +132,15 @@ export class MainComponent {
     }
   ];
   ngOnInit(){
+    window.addEventListener('scroll', reveal);
+  }
+}
+
+function reveal(){
+  var reveals = document.querySelectorAll('.revealTecs');
+  for(let i=0; i<reveals.length; i++){
+    let windowheight = window.innerHeight;
+    let revealtop = reveals[i].getBoundingClientRect().top;
+    let revealpoint = 150;
   }
 }

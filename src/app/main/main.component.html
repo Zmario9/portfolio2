@@ -8,7 +8,7 @@
             <h1>Introducción</h1>
             <p>
                 ¡Hola!, soy José Manuel Correa Castro, y soy 
-                un desarrollador de paginas web con conocimiento de 
+                un desarrollador FrontEnd con conocimiento de 
                 varias tecnologias que pueden hacerme capaz de maquetar y 
                 decorar páginas web en base a las necesidades del cliente.
             </p>
@@ -24,7 +24,7 @@
     <article id="secondContainer">
         <h1>Tecnologías conocidas</h1>
         <div>
-            <div class="knowledges" *ngFor="let knows of conocimientos; let i = index">
+            <div  class="knowledges knowledge-{{i+1}} reveal " *ngFor="let knows of conocimientos; let i = index">
                 <h1>{{knows.nombre}}</h1>
                 <img [src]="knows.src" [alt]="knows.nombre">
             </div>

@@ -1,82 +1,155 @@
-main {
+/* VARIABLES */
+
+/* COLORES DE LA PAGINA */
+$--color-primario: #223593;
+$--color-secundario: white;
+$--color-terciario: black;
+$--color-cuaternario: yellow;
+
+$--color-primario-main: #0E0A19;
+$--color-secundario-main: #4121A0;
+$--color-terciario-main: #7142F0;
+$--color-cuaternario-main: white;
+$--color-cuaterciario-main: linear-gradient(95deg, rgba(254,254,254,1) 5%, rgba(113,66,240,1) 94%);
+/* ESTRUCTURAS FOR EACH */
+
+
+
+/* PLACEHOLDERS */
+%displayFlex{
+  display: flex;
+}
+%flexColumnNowrap {
   display: flex;
   flex-flow: column nowrap;
+}
+%flexRowNowrap{
+  display: flex;
+  flex-flow: row nowrap;
+}
+%flexColumnWrap {
+  display: flex;
+  flex-flow: column wrap;
+}
+%flexRowWrap{
+  display: flex;
+  flex-flow: row wrap;
+}
+%centeredContent{
   justify-content: center;
   align-items: center;
-  font-family: "Kanit", sans-serif;
+}
+%alignItemsCenter{
+  align-items: center;
+}
+%justifyContCenter{
+  justify-content: center;
+}
+
+/* MIXINS */
+@mixin displayflexColumnNowrap{
+  display: flex;
+  flex-flow: column nowrap;
+}
+@mixin displayflexColumnWrap{
+  display: flex;
+  flex-flow: column wrap;
+}
+@mixin displayflexRowNowrap{
+  display: flex;
+  flex-flow: row nowrap;
+}
+@mixin displayflexRowWrap{
+  display: flex;
+  flex-flow: row wrap;
+}
+
+@mixin fadeIn($time){ //Minimo deberia ser 1 segundo
+  opacity: 1;
+  animation-name: fade-in;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: $time;
+}
+/* Keyframes (Animaciones) */
+@keyframes fade-in {
+  0%{
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  50%{
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ESTRUCTURA */
+main {
+  @extend %flexColumnNowrap, %centeredContent;
+  /*  TODOS LOS CONTENEDORES  */
   article {
-    display: flex;
     width: 100%;
     max-width: 1300px;
   }
+  /*  CONTENEDOR 1 */
   #firstContainer {
-    div:nth-child(1), div:nth-child(2) {
-      flex-flow: column nowrap;
-      display: flex;
-      align-items: center;
-      justify-content: start;
+    margin: {
+      top: 2%;
+    }
+    display: flex;
+    #frontEndProfile, .contentOneText {
+      @extend %flexColumnNowrap, %alignItemsCenter;
     }
   }
+  /*  CONTENEDOR 2 */
   #secondContainer{
-    flex-flow: column nowrap;
-    align-items: center;
+    @extend %flexColumnNowrap, %alignItemsCenter;
     padding: {
       bottom: 3%; //Eliminar pronto al hacer la seccion de proyectos
     }
     & > div {
-      display: flex;
-      flex-flow: wrap row;
-      justify-content: center;
-      max-width: 80%;
+      @extend %flexRowWrap, %justifyContCenter;
+      min-width: 80%;
       .knowledges {
-        display: flex;
-        flex-flow: nowrap column;
-        align-items: center;
+        @extend %flexColumnNowrap, %centeredContent;
         margin: 2%;
         width: 40%;
         max-width: 120px;
         max-height: 125px;
-        border: 1px solid transparent;
-        border-radius: 15px;
-        justify-content: center;
         padding: {
           bottom: 20px;
         }
         h1{
-          font-size: 1em;
-          color: white;
           margin: {
             bottom: 3%;
           }
         }
         img{
           width: 50%;
+          max-height: 59px; //Verificar luego.
         }
       } 
     }
 
   }
+  /*  CONTENEDOR 3 */
   #thirdContainer{
-    flex-flow: column nowrap;
-    align-items: center;
+    @extend %flexColumnNowrap, %alignItemsCenter;
     & > div {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: center;
+      @extend %flexRowWrap, %justifyContCenter;
       .projects {
-        display: flex;
-        flex-flow: nowrap column;
+        @extend %flexColumnNowrap;
         max-width: 300px;
         .descriptionPart{
-          display: flex;
-          flex-flow: nowrap column; 
-          align-items: center;
+          @extend %flexColumnNowrap, %alignItemsCenter;
           width: 100%;
           .technologyTags {
-            display: flex;
-            flex-flow: row wrap;
-            width: 100%;
-            align-items: center;
+            @extend %flexRowWrap, %alignItemsCenter;
+            width: 100%;     
             padding: {
               left: .3em;
               right: .3em;
@@ -109,37 +182,72 @@ main {
 
 }
 
+/* ESTILO */
 main {
+  font-family: "Kanit", sans-serif;
+  /* Contenedor 1 */
   #firstContainer {
     .colorAzul {
-      background-color: #223593;
-      color: white;
+      @include fadeIn(1.2s);
+      background-color: $--color-secundario-main;
+      border-radius: 10px;
+      p, h1{
+        color: $--color-cuaternario-main;
+      }
     }
     div:nth-child(1){
+      @include fadeIn(.7s);
       h1{
-        color: #223593;
+        background-image: $--color-cuaterciario-main;
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -moz-text-fill-color: transparent;
       }
     }
   }
+  /* Contenedor 2 */
   #secondContainer{
+    // background-image: linear-gradient(186deg, transparent 38%, $--color-terciario-main 50%, $--color-terciario-main 60%, transparent 70%);
+    h1 {
+      color: $--color-cuaternario-main;
+    }
     & > div {
-      background-color: #223593;
-      border-radius: 20px;
+      // background-color: $--color-terciario-main;
+      // background-color: black;
+      // border-radius: 20px;
       .knowledges {
-        box-shadow: 5px 5px 13px 5px rgb(144, 164, 174);
-        background-color: black;
-        color: white;
+        background-color: $--color-secundario-main;
+        color: $--color-secundario;
+        box-shadow: 5px 5px 13px 5px $--color-secundario-main;
+        border: 1px solid $--color-terciario-main;
+        border-radius: 15px;
+        h1{
+          font-size: 1em;
+          color: $--color-secundario;
+        }
       } 
     }
   }
+  .active {
+      $--time-fade-projects: 0.5s;
+      @for $i from 1 through 12 {
+        .knowledge-#{$i} {
+          @include fadeIn($--time-fade-projects);
+          $--time-fade-projects : $--time-fade-projects + 0.1;
+        }
+      }
+  }
+  /* Contenedor 3 */
   #thirdContainer{
     & > div {
       .projects {
+        background-color: $--color-primario;
         overflow: hidden;
         border-top-left-radius: 25px;
         border-top-right-radius: 25px;
-        border: 5px solid black;
-        background-color: #223593;
+        border: 5px solid $--color-terciario;
         img{
           object-fit: cover;
           border: {
@@ -149,24 +257,25 @@ main {
         .descriptionPart{
           .technologyTags{
             span{
+              background-color: $--color-terciario;
+              color: $--color-secundario;
               border-radius: 12px;
               text-align: center;
               max-height: 25px;
-              background-color: black;
-              color: white;
+
             }
           }
           button{
-            color: white;
-            background-color: yellow;
-            text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black,
-            1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+            background-color: $--color-cuaternario;
+            color: $--color-secundario;  
+            text-shadow: 2px 0 $--color-terciario, -2px 0 $--color-terciario, 0 2px $--color-terciario, 0 -2px $--color-terciario,
+            1px 1px $--color-terciario, -1px -1px $--color-terciario, 1px -1px $--color-terciario, -1px 1px $--color-terciario;
             font-family: "Kanit", sans-serif;
-            border: 5px solid black; 
+            border: 5px solid $--color-terciario; 
             border-radius: 25px;
           }
           h3, p{
-            color: white;
+            color: $--color-secundario;
           }
         }
       }
@@ -174,7 +283,9 @@ main {
   }
 }
 
+/* Smurf phones */
 @media screen and (max-width: 206px) {
+  /* ESTILO */
   main {
     article {
       h1 {
@@ -187,7 +298,10 @@ main {
   }
 }
 
+
+/* Normal phones */
 @media screen and (max-width: 600px) {
+  /* ESTRUCTURA */
   main {
     #firstContainer{
         img {
@@ -270,6 +384,7 @@ main {
         }
       }
     }
+    
     #thirdContainer{
       & > div{
         .projects{
@@ -289,9 +404,7 @@ main {
           .descriptionPart{
             .technologyTags{
               span{
-                background-color: black;
                 font-size: .9em;
-                color: white;
               }
             }
             button {
@@ -304,6 +417,7 @@ main {
     }
   }
 
+  /* ESTILO */
   main {
     article {
       div:nth-child(1), div:nth-child(2) {
@@ -315,7 +429,9 @@ main {
   }
 }
 
+/*Tablets - Laptops */
 @media screen and (min-width: 600px) and (max-width: 992px) {
+  /* ESTRUCTURA */
   main {
     #firstContainer {
       flex-flow: row nowrap;
@@ -397,6 +513,7 @@ main {
 
   }
 
+  /* ESTILOS */
   main {
     #thirdContainer{
       h1 {
@@ -424,7 +541,9 @@ main {
   }
 }
 
+/* PC, other devices */
 @media screen and (min-width:992px){
+  /* ESTRUCTURA */
   main{
     #firstContainer, #secondContainer{
       & > h1 {
@@ -496,6 +615,7 @@ main {
     }
   }
 
+  /* ESTILO */
   main {
     #secondContainer{
       & > div{
