@@ -143,7 +143,7 @@ main {
         @extend %flexColumnNowrap;
         max-width: 300px;
         img{
-          margin:{
+          margin: {
             bottom: 3%;
           }
         }
@@ -561,7 +561,7 @@ main {
 @media screen and (min-width:992px){
   /* ESTRUCTURA */
   main{
-    #firstContainer, #secondContainer{
+    #secondContainer{
       & > h1 {
         font-size: 2.2em;
         margin: {
@@ -571,18 +571,32 @@ main {
       }
     }
     #firstContainer{
+      #frontEndProfile{
+        h1 {
+          font-size: 2.2em;
+          margin: {
+            top: -10%;
+            bottom: 3%;
+          }
+        }
+      }
+      #contentOneText{
+        & > h1 {
+          font-size: 2.2em;
+          margin: {
+            top: 3%;
+            bottom: 3%;
+          }
+        }
+      }
+    }
+    #firstContainer{
       div:nth-child(1),div:nth-child(2){
         padding: {
           right: 2%;
           left: 2%;
         }
-        h1 {
-          font-size: 2.2em;
-          margin: {
-            top: 2%;
-            bottom: 3%;
-          }
-        }
+
         p {
           font-size: 1.7em;
         }
