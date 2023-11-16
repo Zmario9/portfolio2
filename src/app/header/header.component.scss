@@ -85,6 +85,8 @@ header{
     justify-content: center;
     width: $--total-width;
     z-index: 9;
+    min-height: 65px;
+    max-height: 90px;
     div{
         @extend %flexRowNowrap;
         justify-content: space-between;
@@ -96,6 +98,7 @@ header{
             @extend %flexColumnNowrap;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
         } 
         .sidebar{
             @extend %displayFlex, %centeredContent;

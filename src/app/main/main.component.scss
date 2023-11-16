@@ -1,10 +1,10 @@
 /* VARIABLES */
 
 /* COLORES DE LA PAGINA */
-$--color-primario: #223593;
-$--color-secundario: white;
-$--color-terciario: black;
-$--color-cuaternario: yellow;
+// $--color-primario: #223593;
+// $--color-secundario: white;
+// $--color-terciario: black;
+// $--color-cuaternario: yellow;
 
 $--color-primario-main: #0E0A19;
 $--color-secundario-main: #4121A0;
@@ -118,15 +118,13 @@ main {
         @extend %flexColumnNowrap, %centeredContent;
         margin: 2%;
         width: 40%;
+        min-height: 100px;
         max-width: 120px;
         max-height: 125px;
+        justify-content: space-between;
         padding: {
-          bottom: 20px;
-        }
-        h1{
-          margin: {
-            bottom: 3%;
-          }
+          bottom: 1%;
+          top: 1%;
         }
         img{
           width: 50%;
@@ -144,6 +142,11 @@ main {
       .projects {
         @extend %flexColumnNowrap;
         max-width: 300px;
+        img{
+          margin:{
+            bottom: 3%;
+          }
+        }
         .descriptionPart{
           @extend %flexColumnNowrap, %alignItemsCenter;
           width: 100%;
@@ -216,13 +219,13 @@ main {
     & > div {
       .knowledges {
         background-color: $--color-secundario-main;
-        color: $--color-secundario;
+        color: $--color-cuaternario-main;
         box-shadow: 5px 5px 13px 5px $--color-secundario-main;
         border: 1px solid $--color-secundario-main;
         border-radius: 15px;
         h1{
           font-size: 1em;
-          color: $--color-secundario;
+          color: $--color-cuaternario-main;
         }
       } 
     }
@@ -232,7 +235,7 @@ main {
   @for $i from 1 through 12 {
     .knowledgesActive-#{$i} {
       @include fadeIn($--time-fade-projects);
-      $--time-fade-projects : $--time-fade-projects + 0.2;
+      $--time-fade-projects : $--time-fade-projects + 0.1;
     }
   }
   /* Contenedor 3 */
@@ -270,17 +273,31 @@ main {
           button{
             background-color: $--color-secundario-main;
             color: $--color-cuaternario-main;  
-            text-shadow: 2px 0 $--color-terciario, -2px 0 $--color-terciario, 0 2px $--color-terciario, 0 -2px $--color-terciario,
-            1px 1px $--color-terciario, -1px -1px $--color-terciario, 1px -1px $--color-terciario, -1px 1px $--color-terciario;
+            text-shadow: 2px 0 $--color-terciario-main, -2px 0 $--color-terciario-main, 0 2px $--color-terciario-main, 0 -2px $--color-terciario-main,
+            1px 1px $--color-terciario-main, -1px -1px $--color-terciario-main, 1px -1px $--color-terciario-main, -1px 1px $--color-terciario-main;
             font-family: "Kanit", sans-serif;
             border: 5px solid $--color-terciario-main; 
             border-radius: 25px;
+            transition-duration: 0.2s;
+            cursor: pointer;
+            &:hover, &:focus {
+              background-color: $--color-primario-main;
+              color: $--color-secundario-main;
+              border: 5px solid $--color-secundario-main; 
+            }
           }
           h3, p{
-            color: $--color-secundario;
+            color: $--color-cuaternario-main;
           }
         }
       }
+    }
+  }
+  $--time-fade-projects: .5s;
+  @for $i from 1 through 7 {
+    .projectsActive-#{$i} {
+      @include fadeIn($--time-fade-projects);
+      $--time-fade-projects : $--time-fade-projects + 0.1;
     }
   }
 }
@@ -338,9 +355,6 @@ main {
               flex-flow: wrap row;
 
               min-height: 58px;
-              span{
-
-              }
             }
             p {
               max-height: 95px;

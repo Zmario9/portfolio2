@@ -144,12 +144,22 @@ export class MainComponent {
 
 function reveal(){
   var container: any = $(".knowledges");
+  var projectsContainer: any = $(".projects");
   for(let i=0; i<container.length; i++){
     let windowheight = window.innerHeight;
     let revealtop = container[i].getBoundingClientRect().top;
     let revealpoint = -100;
     if(revealtop < windowheight - revealpoint){
-      container[i].classList.add(`knowledgesActive-${i+1}`);
+      $(container[i]).addClass(`knowledgesActive-${i+1}`);
+    }
+  }
+
+  for(let j=0; j<projectsContainer.length; j++){
+    let windowheight = window.innerHeight;
+    let revealtop = projectsContainer[j].getBoundingClientRect().top;
+    let revealpoint = -100;
+    if(revealtop < windowheight - revealpoint){
+      $(projectsContainer[j]).addClass(`projectsActive-${j+1}`);
     }
   }
 }
