@@ -24,7 +24,7 @@
     <article id="secondContainer">
         <h1>Tecnologías conocidas</h1>
         <div>
-            <div  class="knowledges knowledge-{{i+1}} reveal " *ngFor="let knows of conocimientos; let i = index">
+            <div class="knowledges" *ngFor="let knows of conocimientos; let i = index">
                 <h1>{{knows.nombre}}</h1>
                 <img [src]="knows.src" [alt]="knows.nombre">
             </div>

@@ -132,15 +132,24 @@ export class MainComponent {
     }
   ];
   ngOnInit(){
-    window.addEventListener('scroll', reveal);
+    window.addEventListener('scroll', ()=>{
+      console.log("scroll");
+      console.log(navigator.userAgent);
+      if(window.innerHeight < 900){
+        reveal();
+      }
+    });
   }
 }
 
 function reveal(){
-  var reveals = document.querySelectorAll('.revealTecs');
-  for(let i=0; i<reveals.length; i++){
+  var container: any = $(".knowledges");
+  for(let i=0; i<container.length; i++){
     let windowheight = window.innerHeight;
-    let revealtop = reveals[i].getBoundingClientRect().top;
-    let revealpoint = 150;
+    let revealtop = container[i].getBoundingClientRect().top;
+    let revealpoint = -100;
+    if(revealtop < windowheight - revealpoint){
+      container[i].classList.add(`knowledgesActive-${i+1}`);
+    }
   }
 }

@@ -214,14 +214,11 @@ main {
       color: $--color-cuaternario-main;
     }
     & > div {
-      // background-color: $--color-terciario-main;
-      // background-color: black;
-      // border-radius: 20px;
       .knowledges {
         background-color: $--color-secundario-main;
         color: $--color-secundario;
         box-shadow: 5px 5px 13px 5px $--color-secundario-main;
-        border: 1px solid $--color-terciario-main;
+        border: 1px solid $--color-secundario-main;
         border-radius: 15px;
         h1{
           font-size: 1em;
@@ -230,35 +227,40 @@ main {
       } 
     }
   }
-  .active {
-      $--time-fade-projects: 0.5s;
-      @for $i from 1 through 12 {
-        .knowledge-#{$i} {
-          @include fadeIn($--time-fade-projects);
-          $--time-fade-projects : $--time-fade-projects + 0.1;
-        }
-      }
+
+  $--time-fade-projects : 0.5s;
+  @for $i from 1 through 12 {
+    .knowledgesActive-#{$i} {
+      @include fadeIn($--time-fade-projects);
+      $--time-fade-projects : $--time-fade-projects + 0.2;
+    }
   }
   /* Contenedor 3 */
   #thirdContainer{
+    h1 {
+      color: $--color-cuaternario-main;
+      margin: {
+        bottom: 3%;
+      }
+    }
     & > div {
       .projects {
-        background-color: $--color-primario;
+        background-color: $--color-primario-main;
         overflow: hidden;
         border-top-left-radius: 25px;
         border-top-right-radius: 25px;
-        border: 5px solid $--color-terciario;
+        border: 5px solid $--color-terciario-main;
         img{
           object-fit: cover;
           border: {
-            bottom: 5px solid black;
+            bottom: 5px solid $--color-terciario-main;
           }
         }
         .descriptionPart{
           .technologyTags{
             span{
-              background-color: $--color-terciario;
-              color: $--color-secundario;
+              background-color: $--color-terciario-main;
+              color: $--color-cuaternario-main;
               border-radius: 12px;
               text-align: center;
               max-height: 25px;
@@ -266,12 +268,12 @@ main {
             }
           }
           button{
-            background-color: $--color-cuaternario;
-            color: $--color-secundario;  
+            background-color: $--color-secundario-main;
+            color: $--color-cuaternario-main;  
             text-shadow: 2px 0 $--color-terciario, -2px 0 $--color-terciario, 0 2px $--color-terciario, 0 -2px $--color-terciario,
             1px 1px $--color-terciario, -1px -1px $--color-terciario, 1px -1px $--color-terciario, -1px 1px $--color-terciario;
             font-family: "Kanit", sans-serif;
-            border: 5px solid $--color-terciario; 
+            border: 5px solid $--color-terciario-main; 
             border-radius: 25px;
           }
           h3, p{
