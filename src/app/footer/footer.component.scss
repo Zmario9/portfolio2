@@ -1,0 +1,116 @@
+/* VARIABLES */
+$--color-primario-main: #0e0a19;
+$--color-secundario-main: #4121a0;
+$--color-terciario-main: #7142f0;
+$--color-cuaternario-main: white;
+
+/* PLACEHOLDERS */
+%displayFlex {
+    display: flex;
+  }
+  %flexColumnNowrap {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  %flexRowNowrap {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  %flexColumnWrap {
+    display: flex;
+    flex-flow: column wrap;
+  }
+  %flexRowWrap {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  %centeredContent {
+    justify-content: center;
+    align-items: center;
+  }
+  %alignItemsCenter {
+    align-items: center;
+  }
+  %justifyContCenter {
+    justify-content: center;
+  }
+  
+  /* MIXINS */
+  @mixin displayflexColumnNowrap {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  @mixin displayflexColumnWrap {
+    display: flex;
+    flex-flow: column wrap;
+  }
+  @mixin displayflexRowNowrap {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  @mixin displayflexRowWrap {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  
+/* Estructura */
+footer{
+    @extend %flexColumnWrap, %centeredContent;
+    padding: {
+        top: 3em;
+        bottom: 2em;
+    }
+    div{
+        @extend %flexColumnWrap, %centeredContent;
+        max-width: 1300px;
+        img{
+            max-height: 60px;
+            max-width: 60px;
+        }
+    }
+}
+
+/* Estilo */
+footer{
+    background-color: #7142f0;
+    color: $--color-cuaternario-main;
+    font-family: "Kanit", sans-serif;
+    div{
+        @extend %flexColumnWrap, %centeredContent;
+        max-width: 1300px;
+        img{
+          margin: {
+            bottom: 1em;
+          }
+          border-radius: 50%;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px){
+    footer{
+      div{
+          p{
+            font-size: .8em;
+          }
+      }
+    }
+}
+@media only screen and (min-width: 600px) and (max-width: 992px){
+  footer{
+    div{ 
+        p{
+          font-size: 1.2em;
+        }
+    }
+  }
+}
+@media only screen and (min-width: 992px){
+  footer{
+    div{
+        p{
+          font-size: 1.7em;
+        }
+    }
+  }
+}

@@ -2,17 +2,17 @@
     <article id="firstContainer">
         <div id="frontEndProfile">
             <h1>Programador Junior FrontEnd.</h1>
-            <img src="assets/images/whoIAm.jpg" alt="">
+            <img src="assets/images/descarga.jpeg" alt="">
         </div>
         <div class="contentOneText colorAzul">
-            <h1>Introducción</h1>
+            <h2>Sobre mí</h2>
             <p>
                 ¡Hola!, soy José Manuel Correa Castro, y soy 
                 un desarrollador FrontEnd con conocimiento de 
                 varias tecnologias que pueden hacerme capaz de maquetar y 
                 decorar páginas web en base a las necesidades del cliente.
             </p>
-            <h1>Cualidades</h1>
+            <h2>Cualidades</h2>
             <p>
                 Siempre dispuesto a trabajar en equipo, abierto a críticas con 
                 el único propósito de mejorar mi manera de trabajar y cómo dar 
@@ -22,16 +22,16 @@
         </div> 
     </article>
     <article id="secondContainer">
-        <h1>Tecnologías conocidas</h1>
+        <h2>Tecnologías conocidas</h2>
         <div>
             <div class="knowledges" *ngFor="let knows of conocimientos; let i = index">
-                <h1>{{knows.nombre}}</h1>
+                <h2>{{knows.nombre}}</h2>
                 <img [src]="knows.src" [alt]="knows.nombre">
             </div>
         </div>
     </article>
     <article id="thirdContainer">
-        <h1>Proyectos</h1>
+        <h2 id="projectsIndex">Proyectos</h2>
         <div>
             <div class="projects" *ngFor="let project of projects;">
                 <img [src]="project.src" [alt]="project.titulo">
@@ -50,7 +50,28 @@
     </article>
     <article id="fourthContainer">
         <div>
-            
+
+        </div>
+    </article>
+    <article id="fifthContainer">
+        <h2>Contacto</h2>
+        <div id="formBackground">
+            <p>¿Tienes alguna propuesta, pregunta o sólo quieres opinar sobre mi portafolio?</p>
+            <p>¡Adelante!</p>
+            <form id="formPortfolio" action="https://formspree.io/f/xyyqaadd" method="POST">
+                <div id="formText">
+                    <div>
+                        <label for="username">Nombre</label>
+                        <input type="text" name="username" id="username" placeholder="Roy Hernandez" required>
+                    </div>
+                    <div>                
+                        <label for="usermail">Correo</label>
+                        <input type="email" name="usermail" id="usermail" placeholder="someoneelse@gmail.com" required>
+                    </div>
+                </div>
+                <textarea name="message" minlength="70" required placeholder="Hola!, me gustaria trabajar contigo para un proyecto..."></textarea>
+                <button type="submit">Enviar<ion-icon name="return-up-forward-outline"></ion-icon></button>
+            </form>
         </div>
     </article>
 </main>

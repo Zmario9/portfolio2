@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ViewportScroller } from "@angular/common";
 import * as $ from 'jquery';
 
 @Component({
@@ -11,23 +12,29 @@ export class HeaderComponent {
   public shouldBeOpened: boolean = true;
   public currentWinSize: number = window.innerWidth;
   public winTablet: number = 992;
+  constructor(private scroller: ViewportScroller ){
+
+  }
   public iconList: any[] = [
     {
       nombre:"Inicio",
       iconoMenu:"home",
+      redirectTo: ""
     },
     {
       nombre:"Proyectos",
       iconoMenu:"briefcase",
+      redirectTo: "projectsIndex"
     },
     {
       nombre:"Contacto",
       iconoMenu:"mail",
-
+      redirecto: "quintContainer"
     },
     {
       nombre:"Referencias",
       iconoMenu: "person-circle",
+      redirectTo:"fourthContainer"
     }
   ];
   public iconSocialList: any[] = [
@@ -134,4 +141,48 @@ export class HeaderComponent {
       } 
     }
   }
+  goTo(place: string) {
+    if(window.innerWidth < 600){
+      $('body').css('overflow', 'auto');
+      $(".sidebar").animate({
+        right: "100vw"
+      }, {
+        start: () => {
+          this.shouldBeOpened = false
+        },
+        complete: () => {
+          this.shouldBeOpened = true
+        }
+      });
+      this.hamburguerOpen = false;
+      this.gotToH2(place);
+    } else {
+      $('body').css('overflow', 'auto');
+      $(".sidebar").animate({
+        top: "100vh"
+      }, {
+        start: () => {
+          this.shouldBeOpened = false
+        },
+        complete: () => {
+          this.shouldBeOpened = true
+        }
+      });
+      this.hamburguerOpen = false;
+      this.gotToH2(place);
+    }
+  }
+
+  gotToH2(value: string){
+    switch (value){
+      case "Inicio": this.scroller.scrollToPosition([0,0]); break;
+      case "Proyectos": this.scroller.scrollToAnchor("thirdContainer"); break;
+      case "Contacto": this.scroller.scrollToAnchor("fifthContainer"); break;
+    }
+  }
 }
+
+
+
+
+

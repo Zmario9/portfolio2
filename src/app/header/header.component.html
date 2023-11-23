@@ -6,7 +6,7 @@
         </label>
         <aside *ngIf="currentWinSize < winTablet" class="sidebar">
             <nav>
-                <button *ngFor="let icons1 of iconList; let i = index;">
+                <button (click)="goTo(icons1.nombre)" *ngFor="let icons1 of iconList; let i = index;">
                     <ion-icon name="{{icons1.iconoMenu}}"></ion-icon>
                     {{icons1.nombre}}
                 </button>
@@ -18,7 +18,7 @@
             </nav>
         </aside>
         <nav *ngIf="currentWinSize > winTablet">
-            <button *ngFor="let icons1 of iconList; let i = index;">
+            <button (click)="goTo(icons1.nombre)"  *ngFor="let icons1 of iconList; let i = index;">
                 <ion-icon name="{{icons1.iconoMenu}}"></ion-icon>
                 {{icons1.nombre}}
             </button>

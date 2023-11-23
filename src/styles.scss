@@ -10,11 +10,14 @@
     margin: 0;
     padding: 0;
 }
-
+html{
+    // scroll-snap-type: y mandatory; //Scroll automatico
+}
 html, body {
     width: 100%;
     min-height: 100vh;
-    // overflow: hidden;
+    scroll-behavior: smooth;
+
 }
 body {
     background: #0E0A19;

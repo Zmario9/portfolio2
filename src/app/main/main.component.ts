@@ -132,14 +132,34 @@ export class MainComponent {
     }
   ];
   ngOnInit(){
+    $("#formPortfolio").on('submit', handleSubmit);
     window.addEventListener('scroll', ()=>{
-      console.log("scroll");
-      console.log(navigator.userAgent);
+      // console.log("scroll");
+      // console.log(navigator.userAgent);
       if(window.innerHeight < 900){
         reveal();
       }
     });
   }
+}
+
+async function handleSubmit(this: any, event: any){
+  event.preventDefault();
+  const form = new FormData(this);
+  console.log("funciona");
+  fetch(this.action,{
+    method: this.method,
+    body: form,
+    headers: {
+      'Accept':'application/json'
+    }
+  });
+  if(Response){
+    alert("Correo enviado");
+  } else {
+    alert("NO SE PUDO ENVIAR EL MENSAJE");
+  }
+ this.reset();
 }
 
 function reveal(){
@@ -148,7 +168,7 @@ function reveal(){
   for(let i=0; i<container.length; i++){
     let windowheight = window.innerHeight;
     let revealtop = container[i].getBoundingClientRect().top;
-    let revealpoint = -100;
+    let revealpoint = -210;
     if(revealtop < windowheight - revealpoint){
       $(container[i]).addClass(`knowledgesActive-${i+1}`);
     }
@@ -157,7 +177,7 @@ function reveal(){
   for(let j=0; j<projectsContainer.length; j++){
     let windowheight = window.innerHeight;
     let revealtop = projectsContainer[j].getBoundingClientRect().top;
-    let revealpoint = -100;
+    let revealpoint = -90;
     if(revealtop < windowheight - revealpoint){
       $(projectsContainer[j]).addClass(`projectsActive-${j+1}`);
     }
