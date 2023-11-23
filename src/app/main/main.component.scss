@@ -86,7 +86,7 @@ $--color-cuaterciario-main: linear-gradient(
     transform: translateY(0);
   }
 }
-
+/* ESTRUCTURAS EN GENERAL PARA TODAS LAS VISTAS -------------------------------------------------------------------*/
 /* ESTRUCTURA */
 main {
   @extend %flexColumnNowrap, %centeredContent;
@@ -213,6 +213,7 @@ main {
         }
         textarea {
           padding: 1%;
+          height: 10em;
         }
       }
     }
@@ -438,7 +439,7 @@ main {
           }
         }
         textarea {
-          height: 10em;
+
           resize: none;
           background-color: transparent;
           transition-duration: 0.5s;
@@ -602,10 +603,8 @@ main {
       #formBackground {
         width: 100%;
         & > p:nth-child(1) {
-          color: $--color-cuaternario-main;
         }
         & > p:nth-child(2) {
-          color: $--color-terciario-main;
           margin: {
             bottom: 5%;
             top: 3%;
@@ -631,7 +630,7 @@ main {
               }
               input,
               label {
-                font-size: 1.1em;
+                width: 100%;
               }
               label {
                 margin: {
@@ -655,7 +654,7 @@ main {
       div:nth-child(1),
       div:nth-child(2) {
         p {
-          font-size: 1.3em;
+          font-size: 1.3em !important;
         }
       }
     }
@@ -663,20 +662,20 @@ main {
       & > div {
         .projects {
           h3 {
-            font-size: 1em;
+            font-size: 1em !important;
           }
           p {
-            font-size: 0.8em;
+            font-size: 0.8em !important;
           }
           .descriptionPart {
             .technologyTags {
               span {
-                font-size: 0.9em;
+                font-size: 0.9em !important;
               }
             }
             button {
               font-weight: bold;
-              font-size: 1.2em;
+              font-size: 1.2em !important;
             }
           }
         }
@@ -686,28 +685,29 @@ main {
     #fifthContainer {
       #formBackground {
         & > p:nth-child(1) {
+          color: $--color-cuaternario-main;
         }
         & > p:nth-child(2) {
-          font-size: 1.7em;
+          color: $--color-terciario-main;
+          font-size: 1.7em !important;
         }
         form {
           @include displayflexColumnNowrap();
           #formText {
             @include displayflexColumnNowrap();
             label {
-              // justify-content: center;
               display: flex;
             }
             label,
             input {
-              width: 100%;
+              font-size: 1.1em !important;
             }
           }
           button {
-            font-size: 1.1em;
+            font-size: 1.1em !important;
           }
           textarea {
-            font-size: 1.1em;
+            font-size: 1.1em !important;
           }
         }
       }
@@ -758,8 +758,11 @@ main {
     }
     #thirdContainer {
       align-items: center;
-      div {
+      & > div {
         .projects {
+          img {
+            max-height: 150px;
+          }
           margin: {
             right: 13px;
             bottom: 13px;
@@ -781,7 +784,6 @@ main {
         width: 40vw;
         max-height: 550px;
         h1 {
-          font-size: 2.5em;
           padding: {
             left: 0.5vw;
             right: 0.5vw;
@@ -875,6 +877,11 @@ main {
   /* ESTILOS */
   main {
     #firstContainer {
+      #frontEndProfile{
+        h1{
+          font-size: 2.5em !important;
+        }
+      }
       .contentOneText {
         h1 {
           margin: {
@@ -883,24 +890,21 @@ main {
           }
         }
         p {
-          font-size: 1.3em;
+          font-size: 1.3em !important;
         }
       }
     }
     #thirdContainer {
       h1 {
-        font-size: 1.5em;
+        font-size: 1.5em !important;
       }
       & > div {
         .projects {
-          img {
-            max-height: 150px;
-          }
           .descriptionPart {
             .technologyTags {
               min-height: 48px;
               span {
-                font-size: 0.8em;
+                font-size: 0.8em !important;
               }
             }
           }
@@ -909,8 +913,8 @@ main {
     }
     #secondContainer,
     #thirdContainer {
-      h2 {
-        font-size: 2.2em;
+      & > h2 {
+        font-size: 2.2em !important;
       }
     }
   }
@@ -941,8 +945,8 @@ main {
     }
     #firstContainer {
       #frontEndProfile {
-        h1 {
-          font-size: 2.2em;
+       & > h1 {
+          font-size: 2.2em !important;
           margin: {
             top: -10%;
             bottom: 3%;
@@ -951,7 +955,7 @@ main {
       }
       #contentOneText {
         & > h2 {
-          font-size: 2.2em;
+          font-size: 2.2em !important;
         }
       }
     }
@@ -964,7 +968,7 @@ main {
         }
 
         p {
-          font-size: 1.7em;
+          font-size: 1.7em !important;
         }
       }
       div:nth-child(1) {
@@ -1012,7 +1016,7 @@ main {
     /* Contenedor 5 */
     #fifthContainer {
       h2 {
-        font-size: 2.2em;
+        font-size: 2.2em !important;
       }
       #formBackground {
         width: 100%;
@@ -1022,7 +1026,7 @@ main {
             left: 5%;
             right: 5%;
           }
-          font-size: 1.8em;
+          font-size: 1.8em !important;
         }
         & > p:nth-child(2) {
           color: $--color-terciario-main;
@@ -1030,7 +1034,7 @@ main {
             bottom: 3%;
             top: 3%;
           }
-          font-size: 2.2em;
+          font-size: 2.2em !important;
         }
         form {
           width: 100%;
@@ -1040,7 +1044,7 @@ main {
             width: 90%;
             max-width: 300px;
             height: 60px;
-            font-size: 1.9em;
+            font-size: 1.9em !important;
           }
           #formText {
             justify-content: space-between;
@@ -1055,7 +1059,7 @@ main {
               }
               input,
               label {
-                font-size: 1.5em;
+                font-size: 1.5em !important;
               }
               label {
                 margin: {
@@ -1078,7 +1082,7 @@ main {
     #secondContainer,
     #thirdContainer {
       & > h2 {
-        font-size: 2.2em;
+        font-size: 2.2em !important;
       }
     }
     #secondContainer {
@@ -1093,7 +1097,7 @@ main {
     }
     #thirdContainer {
       & > h1 {
-        font-size: 2.2em;
+        font-size: 2.2em !important;
       }
     }
   }
