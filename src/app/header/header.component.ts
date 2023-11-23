@@ -178,6 +178,7 @@ export class HeaderComponent {
       case "Inicio": this.scroller.scrollToPosition([0,0]); break;
       case "Proyectos": this.scroller.scrollToAnchor("thirdContainer"); break;
       case "Contacto": this.scroller.scrollToAnchor("fifthContainer"); break;
+      // case "Referencias": 
     }
   }
 }
