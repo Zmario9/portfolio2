@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ModalComponent } from '../modal/modal.component';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { Router } from '@angular/router';
 import * as $ from 'jquery';
 
 @Component({
@@ -7,6 +10,7 @@ import * as $ from 'jquery';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
+  modalRef: MdbModalRef<ModalComponent> | null = null;
   conocimientos = [
     {
       nombre:'HTML5',
@@ -68,7 +72,7 @@ export class MainComponent {
                     informado de cómo avanza la construcción de tu hogar, esquema de trabajo, documentos 
                     legales, entre otras cosas.`,
       src: "assets/images/proyectos/buildHouse.PNG",
-      gifSrc:"assets/projectsGif/BuildingAHouse.gif"
+      gifSrc:"assets/gifs/BuildingAHouse.gif"
     },
     {
       titulo: "Natural Foods",
@@ -78,7 +82,7 @@ export class MainComponent {
       description: `Un modelo de página web de recetas sobre comidas naturales, el cual posee una simple interfaz
                     Bien decorada con su texto descriptivo, mas botones que te llevan dichas recetas que desees aprender.`,
       src: "assets/images/proyectos/naturalFoods.PNG",
-      gifSrc:"assets/projectsGif/NaturalFoods.gif"
+      gifSrc:"assets/gifs/NaturalFoods.gif"
     },
     {
       titulo: "Education Page",
@@ -88,7 +92,7 @@ export class MainComponent {
       description: `Un modelo de website sobre educación para niños, lleno de bastante estilo que invita invita a los 
                     padres a ser mas responsables y amables con la crianza y educacion de sus hijos.`,
       src: "assets/images/proyectos/EducationPage2.PNG",
-      gifSrc:"assets/projectsGif/EducationBoring.gif"
+      gifSrc:"assets/gifs/EducationBoring.gif"
     },
     {
       titulo: "Prototipo tienda de ventas",
@@ -98,7 +102,7 @@ export class MainComponent {
       description: `Un modelo de website que alude a ser un clon de Mercadolibre, al hacer click a un producto para comprar
                     te llevara a la seccion donde se describe el precio especifico y demas del mismo.`,
       src: "assets/images/proyectos/ClonePrototypeShop.PNG",
-      gifSrc:"assets/projectsGif/MercadoLibreClone.gif"
+      gifSrc:"assets/gifs/MercadoLibreClone.gif"
     },
     {
       titulo: "Agencia de Marketing",
@@ -108,7 +112,7 @@ export class MainComponent {
       description:`Pagina web sobre Marketing Digital, con animaciones smooth, diseño minimalista con colores llenos
                    de vida agradables para la vista, botones con hover animado y buena organización del contenido.`,
       src: "assets/images/proyectos/AgentesWeb.PNG",
-      gifSrc:"assets/projectsGif/AgenciaOK.gif"
+      gifSrc:"assets/gifs/AgenciaOK.gif"
     },
     {
       titulo: "Portafolio simple",
@@ -118,7 +122,7 @@ export class MainComponent {
       description: `Portafolio hecho bajo un modelo dado en Cadif1, cuyo propósito era ponernos a prueba sobre cómo
                     Decorar y organizar correctamente el FrontPage, con animaciones de hover.`,
       src: "assets/images/proyectos/Portfolio1Template.PNG",
-      gifSrc:"assets/projectsGif/PortfolioModel.gif"
+      gifSrc:"assets/gifs/PortfolioModel.gif"
     },
     {
       titulo: "Modelo 2 de Portafolio",
@@ -128,9 +132,10 @@ export class MainComponent {
       description: `Mi primer modelo de portafolio hecho bajo un modelo dado en Cadif1, decoración minimalista
                     con una simple paleta de colores, texto amigable para la vista, y un buen ajuste de pantalla.`,
       src:"assets/images/proyectos/PortfolioTemplate3.PNG",
-      gifSrc:"assets/projectsGif/PortfolioModel2.gif"
+      gifSrc:"assets/gifs/PortfolioModel2.gif"
     }
   ];
+  constructor(private modalService: MdbModalService, private router: Router) {}
   ngOnInit(){
     $("#formPortfolio").on('submit', handleSubmit);
     window.addEventListener('scroll', ()=>{
@@ -139,6 +144,21 @@ export class MainComponent {
       if(window.innerHeight < 900){
         reveal();
       }
+    });
+  }
+  openModalProjects(object: any){
+    console.log("funciona");
+    console.log(object);
+    const eventAlt = object.gifSrc;
+    let titleProject = object.titulo;
+    // console.log(titleProject);
+    this.modalRef = this.modalService.open(ModalComponent,{
+      data:{
+        name: titleProject,
+        gif: eventAlt
+      },
+      //centra el modal
+      modalClass: 'modal-dialog-centered modal-lg'
     });
   }
 }

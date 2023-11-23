@@ -20,6 +20,15 @@ html, body {
 
 }
 body {
-    background: #0E0A19;
+    background: #0E0A19 !important;
+    font-size: medium !important;
+    font-weight: medium !important;
+    line-height: normal !important;
 }
 
+@import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '@fortawesome/fontawesome-free/scss/solid.scss';
+@import '@fortawesome/fontawesome-free/scss/regular.scss';
+@import '@fortawesome/fontawesome-free/scss/brands.scss';
+ 
+@import 'mdb-angular-ui-kit/assets/scss/mdb.scss';

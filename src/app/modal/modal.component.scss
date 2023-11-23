@@ -1,0 +1,47 @@
+$--color-primario-main: #0e0a19;
+$--color-secundario-main: #4121a0;
+$--color-terciario-main: #7142f0;
+$--color-cuaternario-main: white;
+
+#projectsModalHeader, #projectsModalbody, #projectsModalFooter{
+    font-family: "Kanit", sans-serif;
+    background-color: $--color-primario-main;
+    border-color: $--color-terciario-main !important;
+}
+
+#projectsModalbody{
+    width: 100%;
+    padding: 0;
+    img{
+        width: 100%;
+    }
+}
+
+#projectsModalFooter{
+    display: flex;
+    justify-content: center;
+    & > button{
+        background-color: $--color-secundario-main !important;
+        &:hover, &:focus{
+            background-color: #7142f0 !important;
+            color: $--color-primario-main !important;
+        }
+    }
+    span {
+        font-size: 4vh;
+    }
+    button{
+        font-size: 3vh;
+    }
+}
+
+.modal-header{
+    #mdlKnowImg{
+        height: 3em;
+    }
+}
+
+.modal-header, .modal-body, .modal-footer{
+    font-family: orangekid;
+    background-color: #10212D;
+}

@@ -1,0 +1,19 @@
+<div id="projectsModalHeader" class="modal-header border border-5">
+    <h5 class="modal-title text-light" id="exampleModalLabel">{{name}}</h5>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalRef.close()"
+    ></button>
+  </div>
+  <div id="projectsModalbody" class="modal-body border-end border-start border-5">
+    <img src="{{gif}}" alt="{{name}}">
+  </div>
+  <div id="projectsModalFooter" class="modal-footer border border-5">
+    <!-- <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
+      Close
+    </button> -->
+    <span class="text-light">Te interesa hacer un sitio como este?</span>
+    <button (click)="goToContacts()" type="button" class="btn text-light">¡Contáctame!</button>
+  </div>
