@@ -3,6 +3,7 @@ import { ModalComponent } from '../modal/modal.component';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
+declare var Swal: any;
 
 @Component({
   selector: 'app-main',
@@ -147,8 +148,8 @@ export class MainComponent {
     });
   }
   openModalProjects(object: any){
-    console.log("funciona");
-    console.log(object);
+    // console.log("funciona");
+    // console.log(object);
     const eventAlt = object.gifSrc;
     let titleProject = object.titulo;
     // console.log(titleProject);
@@ -166,7 +167,7 @@ export class MainComponent {
 async function handleSubmit(this: any, event: any){
   event.preventDefault();
   const form = new FormData(this);
-  console.log("funciona");
+  // console.log("funciona");
   fetch(this.action,{
     method: this.method,
     body: form,
@@ -175,9 +176,21 @@ async function handleSubmit(this: any, event: any){
     }
   });
   if(Response){
-    alert("Correo enviado");
+    Swal.fire({
+      title: "Enviado!",
+      text: "Muchas gracias!, tu mensaje ha sido enviado con éxito!",
+      icon: "success",
+      timer: 3000,
+      showConfirmButton: false,
+    });
   } else {
-    alert("NO SE PUDO ENVIAR EL MENSAJE");
+    Swal.fire({
+      title: "Error...",
+      text: "Oww, algo salio mal al enviar tu mensaje, por favor intenta de nuevo.",
+      icon: "error",
+      timer: 3000,
+      showConfirmButton: false,
+    });
   }
  this.reset();
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ViewportScroller } from "@angular/common";
 import * as $ from 'jquery';
+declare var Swal: any;
 
 @Component({
   selector: 'app-header',
@@ -39,16 +40,20 @@ export class HeaderComponent {
   ];
   public iconSocialList: any[] = [
     {
-      socialLogo:"logo-github"
+      socialLogo:"logo-github",
+      link:"https://github.com/Zmario9"
     },
     {
-      socialLogo:"logo-whatsapp"
+      socialLogo:"logo-whatsapp",
+      link:"https://wa.me/584145306381"
     },
     {
       socialLogo:"logo-discord",
+      link:"https://discord.com/channels/@me"
     },
     {
-      socialLogo:"logo-linkedin"
+      socialLogo:"logo-linkedin",
+      link:"https://www.linkedin.com/in/jose-manuel-correa-castro-69491321a/"
     }
   ];
   ngOnInit(){
@@ -178,7 +183,33 @@ export class HeaderComponent {
       case "Inicio": this.scroller.scrollToPosition([0,0]); break;
       case "Proyectos": this.scroller.scrollToAnchor("thirdContainer"); break;
       case "Contacto": this.scroller.scrollToAnchor("fifthContainer"); break;
-      // case "Referencias": 
+      case "Referencias": Swal.fire({
+        title: "Error",
+        text: "Lo siento, aun no esta disponible esta opcion. :(",
+        icon: "error",
+        timer: 3000,
+        showConfirmButton: false,
+      }); break;
+    }
+  }
+
+  socialMedia(url: string, evento: any){
+    // console.log(evento.srcElement.name);
+    if(evento.srcElement.name != "logo-discord"){  
+      window.location.href = url;  
+    } else {
+      Swal.fire({
+        title: "Discord",
+        text: "Buscame como 'thelostmagician'.",
+        icon: "info",
+        confirmButtonColor: "#7142F0",
+        confirmButtonText: "Ir a Discord"
+      }).then((result: { isConfirmed: any; isDenied: any; }) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          window.location.href = url;      
+        }
+      });; 
     }
   }
 }

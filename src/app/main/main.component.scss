@@ -113,6 +113,7 @@ main {
     #frontEndProfile,
     .contentOneText {
       @extend %flexColumnNowrap, %alignItemsCenter;
+      overflow-x: hidden;
     }
   }
   /*  CONTENEDOR 2 */
@@ -231,13 +232,26 @@ main {
   font-family: "Kanit", sans-serif;
   /* Contenedor 1 */
   #firstContainer {
+    #frontEndProfile{
+      img {
+        border: .5em solid $--color-terciario-main;
+        border-radius: 1em;
+      }
+    }
     .colorAzul {
       @include fadeIn(1.2s);
-      background-color: $--color-secundario-main;
+      background-color: transparent;
       border-radius: 10px;
-      p,
-      h2 {
+      border: 0.5em solid $--color-terciario-main;
+      p{
         color: $--color-cuaternario-main;
+        // text-align: justify;
+        // text-justify: distribute;
+      }
+      h2{
+        color: $--color-terciario-main;    
+        // -webkit-text-stroke-width: 1px; 
+        // -webkit-text-stroke-color: $--color-terciario-main; 
       }
     }
     div:nth-child(1) {
@@ -509,8 +523,8 @@ main {
         }
       }
       img {
-        max-height: 15%;
-        max-width: 45%;
+        max-height: 200px;
+        max-width: 200px;
         object-fit: cover;
         margin: {
           bottom: 3vh;
@@ -986,8 +1000,8 @@ main {
         min-height: 450px;
         justify-content: space-evenly;
         img {
-          max-height: 500px;
-          max-width: 250px;
+          max-height: 400px;
+          max-width: 400px;
         }
       }
       div:nth-child(2) {

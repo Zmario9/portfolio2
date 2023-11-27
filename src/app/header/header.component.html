@@ -11,7 +11,7 @@
                     {{icons1.nombre}}
                 </button>
                 <div>
-                    <button *ngFor="let icons2 of iconSocialList; let i = index">
+                    <button (click)="socialMedia(icons2.link, $event)" *ngFor="let icons2 of iconSocialList; let i = index">
                         <ion-icon name="{{icons2.socialLogo}}"></ion-icon>
                     </button>
                 </div>
@@ -23,7 +23,7 @@
                 {{icons1.nombre}}
             </button>
             <div>
-                <button *ngFor="let icons2 of iconSocialList; let i = index">
+                <button (click)="socialMedia(icons2.link, $event)" *ngFor="let icons2 of iconSocialList; let i = index">
                     <ion-icon name="{{icons2.socialLogo}}"></ion-icon>
                 </button>
             </div>

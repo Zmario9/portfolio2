@@ -3,6 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@700&family=Tilt+Warp&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,300&display=swap');
+
+$--color-terciario-header: #7142F0;
 *,
 *::after,
 *::before{
@@ -10,20 +12,23 @@
     margin: 0;
     padding: 0;
 }
+.swal2-html-container, .swal2-title{
+    color: $--color-terciario-header !important;
+}
 html{
-    // scroll-snap-type: y mandatory; //Scroll automatico
+
 }
 html, body {
     width: 100%;
     min-height: 100vh;
     scroll-behavior: smooth;
-
 }
 body {
     background: #0E0A19 !important;
     font-size: medium !important;
     font-weight: medium !important;
     line-height: normal !important;
+    padding-right: 0 !important; //Para que los modales de sweetalert no le pongan padding al body
 }
 
 @import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
