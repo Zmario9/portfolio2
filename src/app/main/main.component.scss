@@ -115,6 +115,16 @@ main {
       @extend %flexColumnNowrap, %alignItemsCenter;
       overflow-x: hidden;
     }
+    #frontEndProfile{
+      span{
+        padding: {
+          top: 0.5%;
+          bottom: 0.5%;
+          left: 1%;
+          right: 1%;
+        }
+      }
+    }
   }
   /*  CONTENEDOR 2 */
   #secondContainer {
@@ -227,22 +237,26 @@ main {
   }
 }
 
-/* ESTILO */
+/* ------------------------------------------- ESTILO ----------------------------------------------------------*/
 main {
   font-family: "Kanit", sans-serif;
   /* Contenedor 1 */
   #firstContainer {
     #frontEndProfile{
+      position: relative;
+      span{
+        position: absolute;
+      }
       img {
-        border: .5em solid $--color-terciario-main;
-        border-radius: 1em;
+        // border: .5em solid $--color-terciario-main;
+        // border-radius: 1em;
       }
     }
     .colorAzul {
       @include fadeIn(1.2s);
       background-color: transparent;
-      border-radius: 10px;
-      border: 0.5em solid $--color-terciario-main;
+      // border-radius: 10px;
+      // border: 0.5em solid $--color-terciario-main;
       p{
         color: $--color-cuaternario-main;
         // text-align: justify;
@@ -276,8 +290,9 @@ main {
         position: relative;
         background-color: $--color-secundario-main;
         color: $--color-cuaternario-main;
-        box-shadow: 5px 5px 13px 5px $--color-secundario-main;
-        border: 1px solid $--color-secundario-main;
+        box-shadow: 5px 5px 15px 2px $--color-terciario-main;
+        // border: 1px solid $--color-secundario-main;
+        border: 1px solid $--color-cuaternario-main;
         border-radius: 15px;
         cursor: pointer;
         h2 {
@@ -304,8 +319,7 @@ main {
       .projects {
         background-color: $--color-primario-main;
         overflow: hidden;
-        border-top-left-radius: 25px;
-        border-top-right-radius: 25px;
+        border-radius: 25px;
         border: 5px solid $--color-terciario-main;
         img {
           object-fit: cover;
@@ -516,6 +530,12 @@ main {
       }
     }
     #firstContainer {
+      #frontEndProfile{
+        span{
+          left: 45%;
+          bottom: 13%;
+        }
+      }  
       h1 {
         margin: {
           top: 5%;
@@ -676,6 +696,15 @@ main {
       div:nth-child(2) {
         p {
           font-size: 1.3em !important;
+        }
+      }
+    }
+    #firstContainer{
+      #frontEndProfile{
+        span{ 
+          border-radius: 15px;
+          background-color:  $--color-cuaternario-main;
+          color: $--color-terciario-main;
         }
       }
     }

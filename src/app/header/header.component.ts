@@ -62,6 +62,7 @@ export class HeaderComponent {
       this.currentWinSize = window.innerWidth;
       $('body').css('overflow', 'auto');
       if(window.innerWidth < 600){
+        //mobile
         $('.sidebar').css({
           "right": "100vw",
           "top": "10vh",
