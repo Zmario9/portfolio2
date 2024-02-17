@@ -59,9 +59,18 @@ export class Header2Component {
   ngOnInit(){
     upd();
     window.onresize = upd;
-    $("#navMob").animate({
-      left: `-${$("#navMob").width()}`
-    }, 0)
+
+    if(window.innerWidth < 600){
+      $("#navMob").animate({
+        bottom: "2%",
+        left: `-${$("#navMob").width()}`
+      }, 0)
+    } else {
+      $("#navMob").animate({
+        bottom: `-${$("#navMob").height()}`,
+        left: "50%"
+      }, 0)
+    } 
 
     window.addEventListener("resize", (event) => {
       this.hamburguerOpen = false;
@@ -69,6 +78,11 @@ export class Header2Component {
       $('body').css('overflow', 'auto');
       if(window.innerWidth < 600){
         $("#navMob").css("left", `-${$("#navMob").width()}px`);
+        $("#navMob").css("bottom", "2%");
+        this.shouldBeOpened = true
+      } else {
+        $("#navMob").css("left", "50%");
+        $("#navMob").css("bottom", `-${$("#navMob").height()}px`);
         this.shouldBeOpened = true
       }
     });
@@ -77,6 +91,7 @@ export class Header2Component {
   openHambMenu(event: MouseEvent) {
     let burguer = $("#navMob");
     let burguerWidth = $("#navMob").width();
+    let burguerHeight = $("#navMob").height();
     if(window.innerWidth < 600){
       //MOBILES
       if (!this.hamburguerOpen) {
@@ -106,36 +121,36 @@ export class Header2Component {
         });
         this.hamburguerOpen = false;
       } 
-    }// else {
-    //   //TABLETS
-    //   if (!this.hamburguerOpen) {
-    //     $('body').css('overflow', 'hidden');
-    //     $(event).animate({
-    //       top: "65vh"
-    //     }, {
-    //       start: () => {
-    //         this.shouldBeOpened = false
-    //       },
-    //       complete: () => {
-    //         this.shouldBeOpened = true
-    //       }
-    //     })
-    //     this.hamburguerOpen = true;
-    //   } else {
-    //     $('body').css('overflow', 'auto');
-    //     $(event).animate({
-    //       top: "100vh"
-    //     }, {
-    //       start: () => {
-    //         this.shouldBeOpened = false
-    //       },
-    //       complete: () => {
-    //         this.shouldBeOpened = true
-    //       }
-    //     });
-    //     this.hamburguerOpen = false;
-    //   } 
-    // }
+    } else {
+      //TABLETS
+      if (!this.hamburguerOpen) {
+        $('body').css('overflow', 'hidden');
+        $(burguer).animate({
+          bottom: "0"
+        }, {
+          start: () => {
+            this.shouldBeOpened = false
+          },
+          complete: () => {
+            this.shouldBeOpened = true
+          }
+        })
+        this.hamburguerOpen = true;
+      } else {
+        $('body').css('overflow', 'auto');
+        $(burguer).animate({
+          bottom: `-${burguerHeight}`
+        }, {
+          start: () => {
+            this.shouldBeOpened = false
+          },
+          complete: () => {
+            this.shouldBeOpened = true
+          }
+        });
+        this.hamburguerOpen = false;
+      } 
+    }
   }
 
   goTo(place: string) {

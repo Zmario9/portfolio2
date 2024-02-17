@@ -22,6 +22,18 @@ $--header-height: 70px;
     }
 }
 
+@keyframes colorTic {
+    from {
+        color: $--background-header;
+    }
+    50%{
+        color: $--color-primario-header
+    }
+    to {
+        color: $--background-header;
+    }
+}
+
 //------------------------------------------ESTRUCTURA----------------------------------------------//
 header{
     display: flex;
@@ -39,7 +51,6 @@ header{
         height: 100%;
     }
     #navMob{
-        position: absolute;
         position: fixed;
         display: flex;
         div{
@@ -74,7 +85,11 @@ header{
     }
     #navMob{
         background: rgba(113,66,240,0.99);
-        border: 1px solid transparent;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(113,66,240, 0.1));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border:1px;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         button{
             background-color: transparent;
             color: $--background-header;
@@ -83,11 +98,19 @@ header{
                 color: $--color-primario-header;
             }
         }
+        .socialMedia{
+            @include smooth-social-links();    
+            button{
+                display: flex;
+                align-items: center;
+                border: 0;
+            }
+        }
     }
 }
 
 //------------------------------------------MEDIAS------------------------------------------------//
-@media screen and (max-width: 500px){
+@media screen and (max-width: 600px){
     /* ESTRUCTURA */
     header {
         justify-content: end;
@@ -105,13 +128,6 @@ header{
             // left: -200px;
             max-width: 200px;
             width: 70%;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(113,66,240, 0.1));
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-top-right-radius: 15px;
-            border-bottom-right-radius: 15px; 
-            border:1px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             height: 30%;
             min-height: 300px;
             max-height: 500px;
@@ -142,19 +158,14 @@ header{
                 width: 90%;
                 justify-content: space-evenly;
             }
-            .socialMedia{
-                @include smooth-social-links();    
-                button{
-                    display: flex;
-                    align-items: center;
-                    border: 0;
-                }
-            }
+
         }
     }
     /* ESTILO */ 
     header{
         #navMob{
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px; 
             & > button{
                 font-size: 1.6em;
                 text-align: start;
@@ -171,6 +182,89 @@ header{
                 button{
                     ion-icon{
                         font-size: 1.8em;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1200px){
+        /* ESTRUCTURA */
+        header {
+            justify-content: end;
+            align-items: center;
+            padding: {
+                right: 2%;
+                left: 2%;
+            }
+            #navMob{
+                flex-flow: column nowrap;
+                justify-content: space-evenly;
+                align-items: center;
+                bottom: 0%;
+                left: 50%;
+                transform: translateX(-50%);
+                // left: -200px;
+                max-width: 300px;
+                width: 70%;
+                height: 35%;
+                min-height: 300px;
+                max-height: 400px;
+                & > button {
+                    font-weight: bold;
+                    position: relative;
+                    height: 20%;
+                    width: 100%;
+                    &::before{
+                        position: absolute;
+                        display: block;
+                        content:"";
+                        z-index: 111;
+                        border: 1px solid $--color-primario-header;
+                        height: 1%;
+                        width: 90%;
+                        bottom: 10%;     
+                        opacity: 0;   
+                        transition-duration: 0.5s;       
+                    }
+                    &:active, &:focus{
+                        &::before{
+                            opacity: 1;  
+                        }     
+                    }
+                }
+                div{
+                    flex-flow: row nowrap;
+                    width: 90%;
+                    justify-content: space-evenly;
+                }
+    
+            }
+        }
+            /* ESTILO */ 
+    header{
+        #navMob{
+            border-top-right-radius: 15px;
+            border-top-left-radius: 15px; 
+            & > button{
+                // animation: colorTic 3s ease-in-out;
+                // animation-iteration-count: infinite;
+                font-size: 2.3em;
+                text-align: start;
+                padding: {
+                    left: .5em;
+                }
+                border: 0;
+                ion-icon{
+                    position: relative;
+                    top:5%;
+                }
+            }
+            .socialMedia{
+                button{
+                    ion-icon{
+                        font-size: 2.2em;
                     }
                 }
             }
