@@ -24,6 +24,7 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalComponent } from './modal/modal.component';
+import { Header2Component } from './header2/header2.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ModalComponent } from './modal/modal.component';
     HeaderComponent,
     MainComponent,
     FooterComponent,
-    ModalComponent
+    ModalComponent,
+    Header2Component
   ],
   imports: [
     BrowserModule,

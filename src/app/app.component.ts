@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'portfolio2';
+  ngOnInit(){
+    setTimeout(()=>{
+      window.scrollTo(0,0);
+    }, 100);
+  }
 }

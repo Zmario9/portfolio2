@@ -1,0 +1,16 @@
+<header>
+   <button class="circle" id="hamburguer-btn">
+       <ion-icon name="menu-outline" (click)="shouldBeOpened ? openHambMenu($event) : null"></ion-icon>
+   </button>
+   <nav id="navMob">
+    <button class="menuBtns" (click)="goTo(icons1.nombre)" *ngFor="let icons1 of iconList; let i = index;">
+        <ion-icon name="{{icons1.iconoMenu}}"></ion-icon>
+        {{icons1.nombre}}
+    </button>
+    <div class="socialMedia">
+        <button (click)="socialMedia(icons2.link, $event)" *ngFor="let icons2 of iconSocialList; let i = index">
+            <ion-icon name="{{icons2.socialLogo}}"></ion-icon>
+        </button>
+    </div>
+   </nav>
+</header>
