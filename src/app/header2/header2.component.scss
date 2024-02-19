@@ -13,6 +13,40 @@ $--hover-blue: #0A66C2;
 
 $--header-height: 70px;
 
+//Placeholders para prevenir el repetir displays y demas.
+%displayFlex{
+    display: flex;
+}
+%flexColumnNowrap {
+    display: flex;
+    flex-flow: column nowrap;
+}
+%flexRowNowrap{
+    display: flex;
+    flex-flow: row nowrap;
+}
+%flexColumnWrap {
+    display: flex;
+    flex-flow: column wrap;
+}
+%flexRowWrap{
+    display: flex;
+    flex-flow: row wrap;
+}
+%centeredContent{
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flexColumnNowrap{
+    flex-flow: column nowrap;
+}
+
+.swal2-title {
+    color: red;
+}
+
+
 /* MIXINS */
 @mixin smooth-social-links(){
     @for $i from 1 to 5 {
@@ -44,6 +78,20 @@ header{
     max-height: $--header-height + 70;
     min-height: $--header-height;
     height: 8%;
+    & > #navPc {
+        @extend %flexRowNowrap, %centeredContent;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1300px;
+        & > #navBarPc {
+            @extend %flexRowNowrap;
+            & > div {
+            }
+        }
+        img{
+            height: 90%;
+        }
+    }
     #bg-hambmenu{
         width: 100vw;
         height: 100vh;
@@ -118,6 +166,48 @@ header{
                 display: flex;
                 align-items: center;
                 border: 0;
+            }
+        }
+    }
+    & > #navPc {
+        #navBarPc {
+            @extend %flexRowNowrap;
+            width: 100%;
+            max-width: 70%;
+            height: 90%;
+            & > div {
+                @extend %displayFlex; 
+                @include smooth-social-links();
+                font-size: 1.8em;
+                align-items: center;
+                justify-content: space-between;
+                width: 15%; 
+                & > button{
+                    position: relative;
+                    top: 5%;
+                    border: 0;
+                    background-color: transparent;
+                    color: $--background-header;
+                    transition-duration: .5s;
+                }
+            }
+            & > button{
+                ion-icon{
+                    position: relative;
+                    top: 4%;
+                }
+                margin: {
+                    right: 2%;
+                }
+                background-color: transparent;
+                color: $--background-header;
+                z-index: 110;
+                transition-duration: 0.5s;
+                border: 0;
+                font-size: 1.8em;
+                &:hover{
+                    color: $--color-primario-header;
+                }
             }
         }
     }
@@ -222,7 +312,8 @@ header{
                 // left: -200px;
                 max-width: 300px;
                 width: 70%;
-                height: 35%;
+                // height: 35%;
+                height: 27%;
                 min-height: 300px;
                 max-height: 400px;
                 & > button {
@@ -264,7 +355,7 @@ header{
             & > button{
                 // animation: colorTic 3s ease-in-out;
                 // animation-iteration-count: infinite;
-                font-size: 2.3em;
+                font-size: 1.5em;
                 text-align: start;
                 padding: {
                     left: .5em;
@@ -278,10 +369,33 @@ header{
             .socialMedia{
                 button{
                     ion-icon{
-                        font-size: 2.2em;
+                        font-size: 1.8em;
                     }
                 }
             }
+        }
+    }
+}
+
+@media screen and (min-width: 1201px){
+    header{
+        justify-content: center;
+        align-items: center;
+        background: rgba(113,66,240,0.99);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(113,66,240, 0.5));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border:1px;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        top: 0;
+        min-height: 100px;
+        padding: {
+            right: 2%;
+            left: 2%;
+        }
+        #navPc{
+            height: 100%;
+            justify-content: space-between;
         }
     }
 }

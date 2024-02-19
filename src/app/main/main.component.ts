@@ -146,6 +146,18 @@ export class MainComponent {
         reveal();
       }
     });
+    if(window.innerWidth > 1200){
+      $("main").css("margin-top", `${$("header").height()}px`);
+    } else {
+      $("main").css("margin-top", `0`);    
+    }
+    window.addEventListener("resize", ()=>{
+      if(window.innerWidth > 1200){
+        $("main").css("margin-top", `${$("header").height()}px`);
+      } else {
+        $("main").css("margin-top", `0`);    
+      }
+    })
   }
   openModalProjects(object: any){
     // console.log("funciona");

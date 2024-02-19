@@ -12,7 +12,7 @@ export class Header2Component {
   public hamburguerOpen: boolean = false;
   public shouldBeOpened: boolean = true;
   public currentWinSize: number = window.innerWidth;
-  public winTablet: number = 992;
+  public winTablet: number = 1200;
   public isHamOpen: boolean = false;
   constructor(private scroller: ViewportScroller ){
 
@@ -66,6 +66,7 @@ export class Header2Component {
         bottom: "2%",
         left: `-${$("#navMob").width()}`
       }, 0)
+      console.log("Reseteando cel");
     } else {
       $("#navMob").animate({
         bottom: `-${$("#navMob").height()}`,
