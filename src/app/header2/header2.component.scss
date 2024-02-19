@@ -44,19 +44,33 @@ header{
     max-height: $--header-height + 70;
     min-height: $--header-height;
     height: 8%;
+    #bg-hambmenu{
+        width: 100vw;
+        height: 100vh;
+        background-color:rgba(31, 15, 77, 0.5);
+        position: absolute;
+        bottom: -2vh;
+        right: 0;
+        z-index: 80;
+    }
     #hamburguer-btn{
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100%;
+        z-index: 101;
     }
     #navMob{
         position: fixed;
         display: flex;
+        z-index: 100;
+        button{
+            z-index: 101;
+        }
         div{
             display: flex;
             button{
-
+                z-index: 101;
             }
         }
     }

@@ -13,6 +13,7 @@ export class Header2Component {
   public shouldBeOpened: boolean = true;
   public currentWinSize: number = window.innerWidth;
   public winTablet: number = 992;
+  public isHamOpen: boolean = false;
   constructor(private scroller: ViewportScroller ){
 
   }
@@ -79,12 +80,12 @@ export class Header2Component {
       if(window.innerWidth < 600){
         $("#navMob").css("left", `-${$("#navMob").width()}px`);
         $("#navMob").css("bottom", "2%");
-        this.shouldBeOpened = true
       } else {
         $("#navMob").css("left", "50%");
         $("#navMob").css("bottom", `-${$("#navMob").height()}px`);
-        this.shouldBeOpened = true
       }
+      this.shouldBeOpened = true
+      this.isHamOpen = false;
     });
   }
 
@@ -107,6 +108,7 @@ export class Header2Component {
           }
         })
         this.hamburguerOpen = true;
+        this.isHamOpen = true;
       } else {
         $('body').css('overflow', 'auto');
         burguer.animate({
@@ -120,9 +122,9 @@ export class Header2Component {
           }
         });
         this.hamburguerOpen = false;
+        this.isHamOpen = false;
       } 
     } else {
-      //TABLETS
       if (!this.hamburguerOpen) {
         $('body').css('overflow', 'hidden');
         $(burguer).animate({
@@ -136,6 +138,7 @@ export class Header2Component {
           }
         })
         this.hamburguerOpen = true;
+        this.isHamOpen = true;
       } else {
         $('body').css('overflow', 'auto');
         $(burguer).animate({
@@ -149,27 +152,16 @@ export class Header2Component {
           }
         });
         this.hamburguerOpen = false;
+        this.isHamOpen = false;
       } 
     }
   }
 
   goTo(place: string) {
     let burguer = $("#navMob");
-    if(window.innerWidth < 600){
-      $('body').css('overflow', 'auto');
-      $(burguer).animate({
-        left: `-${$("#navMob").width()}`
-      }, {
-        start: () => {
-          this.shouldBeOpened = false
-        },
-        complete: () => {
-          this.shouldBeOpened = true
-        }
-      });
-      this.hamburguerOpen = false;
-      this.gotToH2(place);
-    } //else {
+    this.gotToH2(place);
+    this.hamburguerOpen = false;
+    //else {
     //   $('body').css('overflow', 'auto');
     //   $(".sidebar").animate({
     //     top: "100vh"
@@ -188,9 +180,9 @@ export class Header2Component {
 
   gotToH2(value: string){
     switch (value){
-      case "Inicio": this.scroller.scrollToPosition([0,0]); break;
-      case "Proyectos": this.scroller.scrollToAnchor("thirdContainer"); break;
-      case "Contacto": this.scroller.scrollToAnchor("fifthContainer"); break;
+      case "Inicio": this.scroller.scrollToPosition([0,0]); this.closeHamburguer(); this.isHamOpen = false; break;
+      case "Proyectos": this.scroller.scrollToAnchor("thirdContainer"); this.closeHamburguer(); this.isHamOpen = false; break;
+      case "Contacto": this.scroller.scrollToAnchor("fifthContainer"); this.closeHamburguer(); this.isHamOpen = false; break;
       case "Referencias": Swal.fire({
         title: "Error",
         text: "Lo siento, aun no esta disponible esta opcion. :(",
@@ -198,6 +190,36 @@ export class Header2Component {
         timer: 3000,
         showConfirmButton: false,
       }); break;
+    }
+  }
+
+  closeHamburguer(){
+    let burguer = $("#navMob"); 
+    if(window.innerWidth < 600){
+      $(burguer).animate({
+        left: `-${$("#navMob").width()}`
+        }, {
+        start: () => {
+          this.shouldBeOpened = false;
+        },
+        complete: () => {
+          this.shouldBeOpened = true;
+          $('body').css('overflow', 'auto');
+        }
+      });  
+    } else {
+      $(burguer).animate({
+        bottom: `-${$("#navMob").height()}`,
+        left: "50%"
+        }, {
+        start: () => {
+          this.shouldBeOpened = false;
+        },
+        complete: () => {
+          this.shouldBeOpened = true;
+          $('body').css('overflow', 'auto');
+        }
+      }); 
     }
   }
   
@@ -226,3 +248,4 @@ function upd() {
   var h: any = $("header").height();
   $(".circle").width(h / 1);
 }
+
