@@ -1,5 +1,5 @@
 <header>
-   <button class="circle" id="hamburguer-btn" [style.display]="currentWinSize <= winTablet ? 'flex' : 'none'">
+   <button class="circle" [ngClass]="isHamOpen ? 'btn-active': null" id="hamburguer-btn" [style.display]="currentWinSize <= winTablet ? 'flex' : 'none'">
        <ion-icon name="menu-outline" (click)="isHamOpen ? (shouldBeOpened ? closeHamburguer() : null) : (shouldBeOpened ? openHambMenu($event) : null)"></ion-icon>
    </button>
    <nav id="navMob" [style.display]="currentWinSize <= winTablet ? 'flex' : 'none'">
