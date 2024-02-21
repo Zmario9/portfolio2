@@ -57,7 +57,7 @@ export class Header2Component {
       link:"https://www.linkedin.com/in/jose-manuel-correa-castro-69491321a/"
     }
   ];
-  
+
   ngOnInit(){
     upd();
     window.onresize = upd;
@@ -67,16 +67,16 @@ export class Header2Component {
     });
     //Moviendo el menú hamburguesa a su posición inicial al iniciar la página.
     if(window.innerWidth < 600){
-      $("#navMob").animate({
+      $("#navMob").css({
         bottom: "2%",
-        left: `-${$("#navMob").width()}`
-      }, 0)
+        left: `-${$("#navMob").width()}px`
+      })
       // console.log("Reseteando cel");
     } else {
-      $("#navMob").animate({
-        bottom: `-${$("#navMob").height()}`,
+      $("#navMob").css({
+        bottom: `-${$("#navMob").height()}px`,
         left: "50%"
-      }, 0)
+      })
     } 
     //Eventos al cambiar el cambiar el tamaño de la pantalla.
     window.addEventListener("resize", (event) => {
@@ -84,13 +84,19 @@ export class Header2Component {
       this.currentWinSize = window.innerWidth;
       $('body').css('overflow', 'auto');
       if(window.innerWidth < 600){
-        // console.log($("#navMob").width());
-        $("#navMob").css("left", `-${$("#navMob").width()}px`);
-        $("#navMob").css("bottom", "2%");
+        $("#navMob").css({
+          bottom: "2%",
+          left: `-${$("#navMob").width()}px`
+        })
       } else {
-        $("#navMob").css("left", "50%");
-        $("#navMob").css("bottom", `-${$("#navMob").height()}px`);
+        $("#navMob").css({
+          bottom: `-${$("#navMob").height()}px`,
+          left: "50%"
+        })
       }
+      $("#bg-hambmenu").fadeOut(400, ()=>{
+        $("#bg-hambmenu").css("display", "none");
+      });
       this.shouldBeOpened = true
       this.isHamOpen = false;
     });
@@ -104,7 +110,7 @@ export class Header2Component {
     if(window.innerWidth < 600){
       //MOBILES
       if (!this.hamburguerOpen) {
-        this.animatedHamburguer(burguer, "left", "0","");
+        this.animatedHamburguer(burguer, "left", "2%","0");
         this.hamburguerOpen = true;
         this.isHamOpen = true;
       } 
@@ -126,7 +132,7 @@ export class Header2Component {
     let burguer = $("#navMob"); 
     let bgburguer = $("#bg-hambmenu");
     if(window.innerWidth < 600){
-      this.animatedHamburguer(burguer, "left", `-${$("#navMob").width()}`, "");
+      this.animatedHamburguer(burguer, "left", "2%", `-${$("#navMob").width()}`);
     } else {
       this.animatedHamburguer(burguer, "bottom", `-${$("#navMob").height()}`, "50%");
     }
@@ -142,7 +148,8 @@ export class Header2Component {
   animatedHamburguer(element: any, directionHamb: string, value1: string, value2: string){
     if(directionHamb == "left"){
       element.animate({
-        left: value1
+        bottom: value1,
+        left: value2
        }, {
        start: () => {
          this.shouldBeOpened = false;
@@ -154,7 +161,7 @@ export class Header2Component {
     }
 
     if (directionHamb == "bottom"){
-      $(element).animate({
+      element.animate({
         bottom: value1,
         left: value2
       }, {
@@ -164,7 +171,7 @@ export class Header2Component {
         complete: () => {
           this.shouldBeOpened = true
         }
-      })
+      });
     }
   }
   
