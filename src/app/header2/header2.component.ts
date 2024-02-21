@@ -57,14 +57,15 @@ export class Header2Component {
       link:"https://www.linkedin.com/in/jose-manuel-correa-castro-69491321a/"
     }
   ];
+  
   ngOnInit(){
     upd();
     window.onresize = upd;
-
+    //Estableciendo que el background del menú hamburguesa no se active.
     $("#bg-hambmenu").fadeOut(400, ()=>{
       $("#bg-hambmenu").css("display", "none");
     });
-
+    //Moviendo el menú hamburguesa a su posición inicial al iniciar la página.
     if(window.innerWidth < 600){
       $("#navMob").animate({
         bottom: "2%",
@@ -77,7 +78,7 @@ export class Header2Component {
         left: "50%"
       }, 0)
     } 
-
+    //Eventos al cambiar el cambiar el tamaño de la pantalla.
     window.addEventListener("resize", (event) => {
       this.hamburguerOpen = false;
       this.currentWinSize = window.innerWidth;
@@ -103,33 +104,14 @@ export class Header2Component {
     if(window.innerWidth < 600){
       //MOBILES
       if (!this.hamburguerOpen) {
-        // $('body').css('overflow', 'hidden');
-        burguer.animate({
-          left: 0
-        }, {
-          start: () => {
-            this.shouldBeOpened = false
-          },
-          complete: () => {
-            this.shouldBeOpened = true
-          }
-        })
+        this.animatedHamburguer(burguer, "left", "0","");
         this.hamburguerOpen = true;
         this.isHamOpen = true;
       } 
     } else {
+      //TABLETS
       if (!this.hamburguerOpen) {
-        // $('body').css('overflow', 'hidden');
-        $(burguer).animate({
-          bottom: "0"
-        }, {
-          start: () => {
-            this.shouldBeOpened = false
-          },
-          complete: () => {
-            this.shouldBeOpened = true
-          }
-        })
+        this.animatedHamburguer(burguer, "bottom", "0","50%");
         this.hamburguerOpen = true;
         this.isHamOpen = true;
       }
@@ -138,51 +120,62 @@ export class Header2Component {
       $("#bg-hambmenu").css("display", "block");
     });
   }
+
   //CERRAR MENU HAMBURGUESA
   closeHamburguer(){
     let burguer = $("#navMob"); 
     let bgburguer = $("#bg-hambmenu");
     if(window.innerWidth < 600){
-      $(burguer).animate({
-        left: `-${$("#navMob").width()}`
-        }, {
-        start: () => {
-          this.shouldBeOpened = false;
-        },
-        complete: () => {
-          this.shouldBeOpened = true;
-          $('body').css('overflow', 'auto');
-        }
-      });  
+      this.animatedHamburguer(burguer, "left", `-${$("#navMob").width()}`, "");
     } else {
-      $(burguer).animate({
-        bottom: `-${$("#navMob").height()}`,
-        left: "50%"
-        }, {
-        start: () => {
-          this.shouldBeOpened = false;
-        },
-        complete: () => {
-          this.shouldBeOpened = true;
-          $('body').css('overflow', 'auto');
-        }
-      }); 
+      this.animatedHamburguer(burguer, "bottom", `-${$("#navMob").height()}`, "50%");
     }
+    $('body').css('overflow', 'auto');
     $(bgburguer).fadeOut(400, ()=>{
       bgburguer.css("display", "none");
     });
     this.isHamOpen = false;
     this.hamburguerOpen = false;
   }
+  
+  //MÉTODO PARA LA ANIMACIÓN DEL MENÚ HAMBURGUESA
+  animatedHamburguer(element: any, directionHamb: string, value1: string, value2: string){
+    if(directionHamb == "left"){
+      element.animate({
+        left: value1
+       }, {
+       start: () => {
+         this.shouldBeOpened = false;
+       },
+       complete: () => {
+         this.shouldBeOpened = true;
+       }
+     }); 
+    }
 
-  animatedHamburguer(){}
-
+    if (directionHamb == "bottom"){
+      $(element).animate({
+        bottom: value1,
+        left: value2
+      }, {
+        start: () => {
+          this.shouldBeOpened = false
+        },
+        complete: () => {
+          this.shouldBeOpened = true
+        }
+      })
+    }
+  }
+  
+  //MÉTODO DE SCROLLAJE
   goTo(place: string) {
     let burguer = $("#navMob");
     this.gotToH2(place);
     this.hamburguerOpen = false;
   }
-
+  
+  //MÉTODO QUE COMPLEMENTA AL MÉTODO DE SCROLLAJE
   gotToH2(value: string){
     switch (value){
       case "Inicio": this.scroller.scrollToPosition([0,0]); this.closeHamburguer(); this.isHamOpen = false; break;
@@ -197,9 +190,9 @@ export class Header2Component {
       }); break;
     }
   }
-
-
   
+  
+  //MÉTODO PARA IR A MIS REDES SOCIALES.
   socialMedia(url: string, evento: any){
     // console.log(evento.srcElement.name);
     if(evento.srcElement.name != "logo-discord"){  
