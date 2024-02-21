@@ -61,12 +61,16 @@ export class Header2Component {
     upd();
     window.onresize = upd;
 
+    $("#bg-hambmenu").fadeOut(400, ()=>{
+      $("#bg-hambmenu").css("display", "none");
+    });
+
     if(window.innerWidth < 600){
       $("#navMob").animate({
         bottom: "2%",
         left: `-${$("#navMob").width()}`
       }, 0)
-      console.log("Reseteando cel");
+      // console.log("Reseteando cel");
     } else {
       $("#navMob").animate({
         bottom: `-${$("#navMob").height()}`,
@@ -79,7 +83,7 @@ export class Header2Component {
       this.currentWinSize = window.innerWidth;
       $('body').css('overflow', 'auto');
       if(window.innerWidth < 600){
-        console.log($("#navMob").width());
+        // console.log($("#navMob").width());
         $("#navMob").css("left", `-${$("#navMob").width()}px`);
         $("#navMob").css("bottom", "2%");
       } else {
@@ -90,15 +94,16 @@ export class Header2Component {
       this.isHamOpen = false;
     });
   }
-
+  //ABRIR MENU HAMBURGUESA
   openHambMenu(event: MouseEvent) {
     let burguer = $("#navMob");
     let burguerWidth = $("#navMob").width();
     let burguerHeight = $("#navMob").height();
+    $('body').css('overflow', 'hidden');
     if(window.innerWidth < 600){
       //MOBILES
       if (!this.hamburguerOpen) {
-        $('body').css('overflow', 'hidden');
+        // $('body').css('overflow', 'hidden');
         burguer.animate({
           left: 0
         }, {
@@ -111,24 +116,10 @@ export class Header2Component {
         })
         this.hamburguerOpen = true;
         this.isHamOpen = true;
-      } else {
-        $('body').css('overflow', 'auto');
-        burguer.animate({
-          left: `-${burguerWidth}`
-        }, {
-          start: () => {
-            this.shouldBeOpened = false
-          },
-          complete: () => {
-            this.shouldBeOpened = true
-          }
-        });
-        this.hamburguerOpen = false;
-        this.isHamOpen = false;
       } 
     } else {
       if (!this.hamburguerOpen) {
-        $('body').css('overflow', 'hidden');
+        // $('body').css('overflow', 'hidden');
         $(burguer).animate({
           bottom: "0"
         }, {
@@ -141,62 +132,16 @@ export class Header2Component {
         })
         this.hamburguerOpen = true;
         this.isHamOpen = true;
-      } else {
-        $('body').css('overflow', 'auto');
-        $(burguer).animate({
-          bottom: `-${burguerHeight}`
-        }, {
-          start: () => {
-            this.shouldBeOpened = false
-          },
-          complete: () => {
-            this.shouldBeOpened = true
-          }
-        });
-        this.hamburguerOpen = false;
-        this.isHamOpen = false;
-      } 
+      }
     }
+    $("#bg-hambmenu").fadeIn(400, ()=>{
+      $("#bg-hambmenu").css("display", "block");
+    });
   }
-
-  goTo(place: string) {
-    let burguer = $("#navMob");
-    this.gotToH2(place);
-    this.hamburguerOpen = false;
-    //else {
-    //   $('body').css('overflow', 'auto');
-    //   $(".sidebar").animate({
-    //     top: "100vh"
-    //   }, {
-    //     start: () => {
-    //       this.shouldBeOpened = false
-    //     },
-    //     complete: () => {
-    //       this.shouldBeOpened = true
-    //     }
-    //   });
-    //   this.hamburguerOpen = false;
-    //   this.gotToH2(place);
-    // }
-  }
-
-  gotToH2(value: string){
-    switch (value){
-      case "Inicio": this.scroller.scrollToPosition([0,0]); this.closeHamburguer(); this.isHamOpen = false; break;
-      case "Proyectos": this.scroller.scrollToAnchor("thirdContainer"); this.closeHamburguer(); this.isHamOpen = false; break;
-      case "Contacto": this.scroller.scrollToAnchor("fifthContainer"); this.closeHamburguer(); this.isHamOpen = false; break;
-      case "Referencias": Swal.fire({
-        title: "Error",
-        text: "Lo siento, aun no esta disponible esta opcion. :(",
-        icon: "error",
-        timer: 3000,
-        showConfirmButton: false,
-      }); break;
-    }
-  }
-
+  //CERRAR MENU HAMBURGUESA
   closeHamburguer(){
     let burguer = $("#navMob"); 
+    let bgburguer = $("#bg-hambmenu");
     if(window.innerWidth < 600){
       $(burguer).animate({
         left: `-${$("#navMob").width()}`
@@ -223,7 +168,37 @@ export class Header2Component {
         }
       }); 
     }
+    $(bgburguer).fadeOut(400, ()=>{
+      bgburguer.css("display", "none");
+    });
+    this.isHamOpen = false;
+    this.hamburguerOpen = false;
   }
+
+  animatedHamburguer(){}
+
+  goTo(place: string) {
+    let burguer = $("#navMob");
+    this.gotToH2(place);
+    this.hamburguerOpen = false;
+  }
+
+  gotToH2(value: string){
+    switch (value){
+      case "Inicio": this.scroller.scrollToPosition([0,0]); this.closeHamburguer(); this.isHamOpen = false; break;
+      case "Proyectos": this.scroller.scrollToAnchor("thirdContainer"); this.closeHamburguer(); this.isHamOpen = false; break;
+      case "Contacto": this.scroller.scrollToAnchor("fifthContainer"); this.closeHamburguer(); this.isHamOpen = false; break;
+      case "Referencias": Swal.fire({
+        title: "Error",
+        text: "Lo siento, aun no esta disponible esta opcion. :(",
+        icon: "error",
+        timer: 3000,
+        showConfirmButton: false,
+      }); break;
+    }
+  }
+
+
   
   socialMedia(url: string, evento: any){
     // console.log(evento.srcElement.name);

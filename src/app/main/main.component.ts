@@ -138,19 +138,17 @@ export class MainComponent {
   ];
   constructor(private modalService: MdbModalService, private router: Router) {}
   ngOnInit(){
-    $("#formPortfolio").on('submit', handleSubmit);
-    window.addEventListener('scroll', ()=>{
-      // console.log("scroll");
-      // console.log(navigator.userAgent);
-      if(window.innerHeight < 900){
-        reveal();
-      }
-    });
     if(window.innerWidth > 1200){
       $("main").css("margin-top", `${$("header").height()}px`);
     } else {
       $("main").css("margin-top", `0`);    
     }
+    $("#formPortfolio").on('submit', handleSubmit);
+    window.addEventListener('scroll', ()=>{
+      if(window.innerHeight < 900){
+        reveal();
+      }
+    });
     window.addEventListener("resize", ()=>{
       if(window.innerWidth > 1200){
         $("main").css("margin-top", `${$("header").height()}px`);
@@ -160,8 +158,6 @@ export class MainComponent {
     })
   }
   openModalProjects(object: any){
-    // console.log("funciona");
-    // console.log(object);
     const eventAlt = object.gifSrc;
     let titleProject = object.titulo;
     // console.log(titleProject);
