@@ -79,6 +79,7 @@ export class Header2Component {
       this.currentWinSize = window.innerWidth;
       $('body').css('overflow', 'auto');
       if(window.innerWidth < 600){
+        console.log($("#navMob").width());
         $("#navMob").css("left", `-${$("#navMob").width()}px`);
         $("#navMob").css("bottom", "2%");
       } else {
