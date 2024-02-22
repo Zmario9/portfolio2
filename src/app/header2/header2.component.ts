@@ -111,17 +111,16 @@ export class Header2Component {
       //MOBILES
       if (!this.hamburguerOpen) {
         this.animatedHamburguer(burguer, "left", "2%","0");
-        this.hamburguerOpen = true;
-        this.isHamOpen = true;
       } 
     } else {
       //TABLETS
       if (!this.hamburguerOpen) {
         this.animatedHamburguer(burguer, "bottom", "0","50%");
-        this.hamburguerOpen = true;
-        this.isHamOpen = true;
+
       }
     }
+    this.hamburguerOpen = true;
+    this.isHamOpen = true;
     $("#bg-hambmenu").fadeIn(400, ()=>{
       $("#bg-hambmenu").css("display", "block");
     });
@@ -183,11 +182,11 @@ export class Header2Component {
   }
   
   //MÉTODO QUE COMPLEMENTA AL MÉTODO DE SCROLLAJE
-  gotToH2(value: string){
+  gotToH2(value: Array<number>|string){
     switch (value){
-      case "Inicio": this.scroller.scrollToPosition([0,0]); this.closeHamburguer(); this.isHamOpen = false; break;
-      case "Proyectos": this.scroller.scrollToAnchor("thirdContainer"); this.closeHamburguer(); this.isHamOpen = false; break;
-      case "Contacto": this.scroller.scrollToAnchor("fifthContainer"); this.closeHamburguer(); this.isHamOpen = false; break;
+      case "Inicio": this.scrollingTo([0,0]); break;
+      case "Proyectos": this.scrollingTo("thirdContainer"); break;
+      case "Contacto": this.scrollingTo("fifthContainer"); break;
       case "Referencias": Swal.fire({
         title: "Error",
         text: "Lo siento, aun no esta disponible esta opcion. :(",
@@ -196,6 +195,16 @@ export class Header2Component {
         showConfirmButton: false,
       }); break;
     }
+  }
+
+  scrollingTo(value: [number, number] | string){
+    if (typeof value == 'string'){
+      this.scroller.scrollToAnchor(value); 
+    } else {
+      this.scroller.scrollToPosition(value); 
+    }
+    this.closeHamburguer();
+    this.isHamOpen = false;
   }
   
   
