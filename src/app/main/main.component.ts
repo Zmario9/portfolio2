@@ -4,6 +4,18 @@ import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
 declare var Swal: any;
+interface NameSrc{
+  nombre: string;
+  src: string;
+}
+
+interface ProjectData{
+  titulo: string;
+  technologies: Array<string>;
+  description: string;
+  src: string;
+  gifSrc: string;
+}
 
 @Component({
   selector: 'app-main',
@@ -12,7 +24,7 @@ declare var Swal: any;
 })
 export class MainComponent {
   modalRef: MdbModalRef<ModalComponent> | null = null;
-  conocimientos = [
+  conocimientos: NameSrc[] = [
     {
       nombre:'HTML5',
       src:"assets/images/html.png"
@@ -63,7 +75,7 @@ export class MainComponent {
     }
   ];
 
-  projects = [
+  projects: ProjectData[] = [
     {
       titulo: "Building a House",
       technologies:[
@@ -172,7 +184,7 @@ export class MainComponent {
   }
 }
 
-async function handleSubmit(this: any, event: any){
+async function handleSubmit(this: HTMLFormElement, event: Event){
   event.preventDefault();
   const form = new FormData(this);
   // console.log("funciona");
@@ -202,10 +214,9 @@ async function handleSubmit(this: any, event: any){
   }
  this.reset();
 }
-
 function reveal(){
-  var container: any = $(".knowledges");
-  var projectsContainer: any = $(".projects");
+  var container: JQuery<HTMLElement> = $(".knowledges");
+  var projectsContainer: JQuery<HTMLElement> = $(".projects");
   for(let i=0; i<container.length; i++){
     let windowheight = window.innerHeight;
     let revealtop = container[i].getBoundingClientRect().top;
