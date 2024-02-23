@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ViewportScroller } from "@angular/common";
+import * as myData from '../page-data/page-data.module';
 import * as $ from 'jquery';
-declare var Swal: any;
+import Swal, {SweetAlertOptions} from 'sweetalert2';
 
 @Component({
   selector: 'app-header2',
@@ -17,46 +18,8 @@ export class Header2Component {
   constructor(private scroller: ViewportScroller ){
 
   }
-  public iconList: any[] = [
-    {
-      nombre:"Inicio",
-      iconoMenu:"home",
-      redirectTo: ""
-    },
-    {
-      nombre:"Proyectos",
-      iconoMenu:"briefcase",
-      redirectTo: "projectsIndex"
-    },
-    {
-      nombre:"Contacto",
-      iconoMenu:"mail",
-      redirecTo: "quintContainer"
-    },
-    {
-      nombre:"Referencias",
-      iconoMenu: "person-circle",
-      redirectTo:"fourthContainer"
-    }
-  ];
-  public iconSocialList: any[] = [
-    {
-      socialLogo:"logo-github",
-      link:"https://github.com/Zmario9"
-    },
-    {
-      socialLogo:"logo-whatsapp",
-      link:"https://wa.me/584145306381"
-    },
-    {
-      socialLogo:"logo-discord",
-      link:"https://discord.com/channels/@me"
-    },
-    {
-      socialLogo:"logo-linkedin",
-      link:"https://www.linkedin.com/in/jose-manuel-correa-castro-69491321a/"
-    }
-  ];
+  public iconList: myData.IconList[] = myData.iconList; 
+  public iconSocialList: myData.IconSocialList[] = myData.iconSocialList;
 
   ngOnInit(){
     upd();
@@ -144,7 +107,7 @@ export class Header2Component {
   }
   
   //MÉTODO PARA LA ANIMACIÓN DEL MENÚ HAMBURGUESA
-  animatedHamburguer(element: any, directionHamb: string, value1: string, value2: string){
+  animatedHamburguer(element: JQuery<HTMLElement>, directionHamb: string, value1: string, value2: string){
     if(directionHamb == "left"){
       element.animate({
         bottom: value1,
@@ -209,9 +172,9 @@ export class Header2Component {
   
   
   //MÉTODO PARA IR A MIS REDES SOCIALES.
-  socialMedia(url: string, evento: any){
-    // console.log(evento.srcElement.name);
-    if(evento.srcElement.name != "logo-discord"){  
+  socialMedia(url: string, evento: MouseEvent){
+    const targetElement = evento.target as HTMLElement;
+    if(targetElement.getAttribute('name') != "logo-discord"){  
       window.location.href = url;  
     } else {
       Swal.fire({
@@ -220,7 +183,7 @@ export class Header2Component {
         icon: "info",
         confirmButtonColor: "#7142F0",
         confirmButtonText: "Ir a Discord"
-      }).then((result: { isConfirmed: any; isDenied: any; }) => {
+      }).then((result: { isConfirmed: boolean; isDenied: boolean; }) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           window.location.href = url;      
@@ -231,7 +194,9 @@ export class Header2Component {
 }
 
 function upd() {
-  var h: any = $("header").height();
-  $(".circle").width(h / 1);
+  var h: number | undefined = $("header").height();
+  if (h !== undefined) {
+    $(".circle").width(h / 1); 
+  }
 }
 

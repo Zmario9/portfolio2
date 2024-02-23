@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 import * as $ from 'jquery';
 //Con esto llamo al script data.ts del modulo de page-data del proyecto.
 import * as myData from '../page-data/page-data.module';
-declare var Swal: any;
+//SweetAlert typeof para que no requiera el uso de any
+import Swal, {SweetAlertOptions} from 'sweetalert2';
 
 @Component({
   selector: 'app-main',
@@ -14,6 +15,7 @@ declare var Swal: any;
 })
 export class MainComponent {
   modalRef: MdbModalRef<ModalComponent> | null = null;
+  mainElement: JQuery<HTMLElement> = $("main");
   conocimientos: myData.NameSrc[] = myData.conocimientos;
   projects: myData.ProjectData[] = myData.projects;
 
@@ -21,9 +23,9 @@ export class MainComponent {
   ngOnInit(){
     // console.log(myData.dataAlgo);
     if(window.innerWidth > 1200){
-      $("main").css("margin-top", `${$("header").height()}px`);
+      this.mainElement.css("margin-top", `${$("header").height()}px`);
     } else {
-      $("main").css("margin-top", `0`);    
+      this.mainElement.css("margin-top", `0`);    
     }
     $("#formPortfolio").on('submit', handleSubmit);
     window.addEventListener('scroll', ()=>{
@@ -33,13 +35,13 @@ export class MainComponent {
     });
     window.addEventListener("resize", ()=>{
       if(window.innerWidth > 1200){
-        $("main").css("margin-top", `${$("header").height()}px`);
+        this.mainElement.css("margin-top", `${$("header").height()}px`);
       } else {
-        $("main").css("margin-top", `0`);    
+        this.mainElement.css("margin-top", `0`);    
       }
     })
   }
-  openModalProjects(object: any){
+  openModalProjects(object: myData.ProjectData){
     const eventAlt = object.gifSrc;
     let titleProject = object.titulo;
     // console.log(titleProject);

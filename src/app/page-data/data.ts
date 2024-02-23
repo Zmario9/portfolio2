@@ -13,7 +13,63 @@ export interface ProjectData{
   gifSrc: string;
 }
 
+export interface IconList{
+    nombre: string,
+    iconoMenu: string,
+    redirectTo: string
+}
+
+export interface IconSocialList{
+    socialLogo: string,
+    link: string
+}
+
 //Variables
+
+//Header
+export let iconList: IconList[] = [
+    {
+      nombre:"Inicio",
+      iconoMenu:"home",
+      redirectTo: ""
+    },
+    {
+      nombre:"Proyectos",
+      iconoMenu:"briefcase",
+      redirectTo: "projectsIndex"
+    },
+    {
+      nombre:"Contacto",
+      iconoMenu:"mail",
+      redirectTo: "quintContainer"
+    },
+    {
+      nombre:"Referencias",
+      iconoMenu: "person-circle",
+      redirectTo:"fourthContainer"
+    }
+  ];
+
+export let iconSocialList: IconSocialList[] = [
+    {
+      socialLogo:"logo-github",
+      link:"https://github.com/Zmario9"
+    },
+    {
+      socialLogo:"logo-whatsapp",
+      link:"https://wa.me/584145306381"
+    },
+    {
+      socialLogo:"logo-discord",
+      link:"https://discord.com/channels/@me"
+    },
+    {
+      socialLogo:"logo-linkedin",
+      link:"https://www.linkedin.com/in/jose-manuel-correa-castro-69491321a/"
+    }
+  ];
+
+//Main
 export let conocimientos: NameSrc[] = [
     {
       nombre:'HTML5',
@@ -138,5 +194,3 @@ export let projects: ProjectData[] = [
       gifSrc:"assets/gifs/PortfolioModel2.gif"
     }
   ];
-
-// export {conocimientos, ProjectData, NameSrc};
