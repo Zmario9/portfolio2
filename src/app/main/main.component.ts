@@ -15,14 +15,17 @@ import Swal, {SweetAlertOptions} from 'sweetalert2';
 })
 export class MainComponent {
   modalRef: MdbModalRef<ModalComponent> | null = null;
-  mainElement: JQuery<HTMLElement> = $("main");
+  mainElement: JQuery<HTMLElement> = $("someClass");
   conocimientos: myData.NameSrc[] = myData.conocimientos;
   projects: myData.ProjectData[] = myData.projects;
 
   constructor(private modalService: MdbModalService, private router: Router) {}
   ngOnInit(){
     // console.log(myData.dataAlgo);
+    this.mainElement = $("main");
     if(window.innerWidth > 1200){
+      console.log(this.mainElement.height());
+      console.log($("header").height());
       this.mainElement.css("margin-top", `${$("header").height()}px`);
     } else {
       this.mainElement.css("margin-top", `0`);    
