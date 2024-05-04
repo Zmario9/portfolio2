@@ -247,10 +247,7 @@ main {
       span{
         position: absolute;
       }
-      img {
-        // border: .5em solid $--color-terciario-main;
-        // border-radius: 1em;
-      }
+
     }
     .colorAzul {
       @include fadeIn(1.2s);
@@ -642,9 +639,9 @@ main {
     #fifthContainer {
       #formBackground {
         width: 100%;
-        & > p:nth-child(1) {
+        // & > p:nth-child(1) {
 
-        }
+        // }
         & > p:nth-child(2) {
           margin: {
             bottom: 5%;

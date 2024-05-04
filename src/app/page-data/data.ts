@@ -1,9 +1,18 @@
 //Interfaces
+var langValue: string = navigator.language;
+console.log(`Lenguaje: ${langValue}`);
+var arrayHeaderNav: string[];
+
+if(langValue == "es-ES"){
+  arrayHeaderNav = ["Inicio", "Proyectos", "Contacto", "Referencias"];
+} else {
+  arrayHeaderNav = ["Start", "Projects", "Contact", "References"];
+}
 
 export interface NameSrc{
-    nombre: string;
-    src: string;
-  }
+  nombre: string;
+  src: string;
+}
   
 export interface ProjectData{
   titulo: string;
@@ -14,14 +23,14 @@ export interface ProjectData{
 }
 
 export interface IconList{
-    nombre: string,
-    iconoMenu: string,
-    redirectTo: string
+  nombre: string,
+  iconoMenu: string,
+  redirectTo: string
 }
 
 export interface IconSocialList{
-    socialLogo: string,
-    link: string
+  socialLogo: string,
+  link: string
 }
 
 //Variables

@@ -24,6 +24,8 @@ export class Header2Component {
   ngOnInit(){
     upd();
     window.onresize = upd;
+    let userLang = navigator.language; 
+    console.log("The language is: " + userLang);
     //Estableciendo que el background del menú hamburguesa no se active.
     $("#bg-hambmenu").fadeOut(400, ()=>{
       $("#bg-hambmenu").css("display", "none");
