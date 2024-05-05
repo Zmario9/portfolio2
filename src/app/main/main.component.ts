@@ -30,8 +30,8 @@ export class MainComponent {
     // console.log(myData.dataAlgo);
     this.mainElement = $("main");
     if(window.innerWidth > 1200){
-      console.log(this.mainElement.height());
-      console.log($("header").height());
+      //console.log(this.mainElement.height());
+      //console.log($("header").height());
       this.mainElement.css("margin-top", `${$("header").height()}px`);
     } else {
       this.mainElement.css("margin-top", `0`);    

@@ -25,7 +25,7 @@ export class Header2Component {
     upd();
     window.onresize = upd;
     let userLang = navigator.language; 
-    console.log("The language is: " + userLang);
+    //console.log("The language is: " + userLang);
     //Estableciendo que el background del menú hamburguesa no se active.
     $("#bg-hambmenu").fadeOut(400, ()=>{
       $("#bg-hambmenu").css("display", "none");
@@ -141,7 +141,7 @@ export class Header2Component {
   
   //MÉTODO DE SCROLLAJE
   goTo(place: string) {
-    console.log(`place: ${place}`)
+    //console.log(`place: ${place}`)
     let burguer = $("#navMob");
     this.gotToH2(place);
     this.hamburguerOpen = false;
@@ -151,7 +151,7 @@ export class Header2Component {
   gotToH2(value: Array<number>|string){
     let arrayLang = myData.arrayHeaderNav;
     let errMsgGoto = myData.errorMessage;
-    console.log(arrayLang);
+    //console.log(arrayLang);
     switch (value){
       case arrayLang[0]: this.scrollingTo([0,0]); break;
       case arrayLang[1]: this.scrollingTo("thirdContainer"); break;
