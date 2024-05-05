@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { Router } from '@angular/router';
 import { ViewportScroller } from "@angular/common";
+import * as myData from '../page-data/page-data.module';
 
 @Component({
   selector: 'app-modal',
@@ -18,6 +19,7 @@ export class ModalComponent {
   name: string | null = null;
   desc: Array<string> | null = null;
   gif: string | null = null;
+  mdlTxt: string[] = myData.modalTxt;
   constructor(public modalRef: MdbModalRef<ModalComponent>, private route:Router, private scroller: ViewportScroller) {}
   goToContacts() {
     this.modalRef.close();

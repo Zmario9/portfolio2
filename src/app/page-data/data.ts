@@ -1,6 +1,6 @@
 //BROWSER LANGUAGE DEFINER
 var langValue: string = navigator.language;
-console.log(`Lenguaje: ${langValue}`);
+//console.log(`Lenguaje: ${langValue}`);
 //HEADER TRANSLATION
 export var arrayHeaderNav: string[];
 export var errorMessage: string;
@@ -9,12 +9,22 @@ export var discordMsg: string[];
 //MAIN TRANSLATION
 export var firstContainerTxt: string[];
 export var secondContainerTxt: string[];
+export var thirdContainerH2: string;
 export var projectsDescTxt: string[];
+export var projectTitleTxt: string[];
+export var previewTxt: string;
+export var fifthContainerH2: string;
+export var fifthContainerText: string[];
+//MODAL TRANSLATION
 
-if (langValue != "es-ES") {
+export var modalTxt: string[];
+
+if (langValue == "es-ES") {
+  //HEADER
   arrayHeaderNav = ["Inicio", "Proyectos", "Contacto", "Referencias"];
   errorMessage = "Lo siento, aun no esta disponible esta opcion. :(";
   discordMsg = ["Buscame como 'thelostmagician'.", "Ir a Discord"];
+  //MAIN
   firstContainerTxt = ["Desarrollador Junior FrontEnd.", "Sobre mí",
     `
    ¡Hola!, soy Magus, y soy 
@@ -31,6 +41,8 @@ if (langValue != "es-ES") {
    desarrollo de algún proyecto dado.
   `];
   secondContainerTxt = ["Tecnologias conocidas"];
+  thirdContainerH2 = "Proyectos";
+  projectTitleTxt = ["Construyendo una casa", "Comidas naturales", "Página educacional", "Clon de mercadolibre", "Marketing Digital", "Portafolio simple", "Modelo 2 de portfolio"];
   projectsDescTxt = [
     `
      Un modelo basado en el website de una constructora cuyo objetivo es mantenerte 
@@ -61,7 +73,20 @@ if (langValue != "es-ES") {
      Mi primer modelo de portafolio hecho bajo un modelo dado en Cadif1, decoración minimalista
      con una simple paleta de colores, texto amigable para la vista, y un buen ajuste de pantalla.
     `
-  ]
+  ];
+  //MODAL
+  previewTxt = "Vista previa";
+  modalTxt = ["Te interesa hacer un sitio como este?", "¡Contáctame!"];
+  //MAIN FIFTH CONTAINER
+  fifthContainerH2 = "Contacto"; 
+  fifthContainerText = [
+    "¿Tienes alguna propuesta, pregunta o solo quieres opinar sobre mi portafolio?",
+    "¡Adelante!",
+    "Nombre",
+    "Correo",
+    "correodealguienmas@gmail.com",
+    "Hola!, me gustaria trabajar contigo para un proyecto..."
+  ];
 } else {
   arrayHeaderNav = ["Home", "Projects", "Contact", "References"];
   errorMessage = "Sorry, this option is not available yet :(";
@@ -80,6 +105,8 @@ if (langValue != "es-ES") {
    problems with different projects. 
   `];
   secondContainerTxt = ["Known technologies"];
+  thirdContainerH2 = "Projects";
+  projectTitleTxt = ["Building a House", "Natural Foods", "Education Page", "Mercadolibre Clone", "Digital Marketing", "Simple portfolio", "Model 2 portfolio"];
   projectsDescTxt = [
     `
      A model based on the website of a construction company whose objective is to keep you
@@ -111,7 +138,17 @@ if (langValue != "es-ES") {
      My first portfolio done under a given model given in Cadif1, minimalistic design with
      a simple palette of colors, friendly text for the view, and an even adjustment of the screen.
     `
-  ]
+  ];
+  previewTxt = "Preview";
+  modalTxt = ["Do you want to make a website like this?", "Contact me!"];
+  fifthContainerH2 = "Contact";
+  fifthContainerText = [
+    "Do you have any proposal, question or just want to make an opinion about my portfolio?", "Go ahead!",
+    "Name",
+    "Email",
+    "someoneelse@gmail.com",
+    "Howdy!, I would like to work with you for a project..."
+  ];
 }
 //Interfaces
 export interface NameSrc {
@@ -237,73 +274,65 @@ export let conocimientos: NameSrc[] = [
 
 export let projects: ProjectData[] = [
   {
-    titulo: "Building a House",
+    titulo: projectTitleTxt[0],
     technologies: [
       "SCSS", "HTML", "CSS"
     ],
-    description: `Un modelo basado en el website de una constructora cuyo objetivo es mantenerte 
-                    informado de cómo avanza la construcción de tu hogar, esquema de trabajo, documentos 
-                    legales, entre otras cosas.`,
+    description: projectsDescTxt[0],
     src: "assets/images/proyectos/buildHouse.PNG",
     gifSrc: "assets/gifs/BuildingAHouse.gif"
   },
   {
-    titulo: "Natural Foods",
+    titulo: projectTitleTxt[1],
     technologies: [
       "SCSS", "HTML", "CSS"
     ],
-    description: `Un modelo de página web de recetas sobre comidas naturales, el cual posee una simple interfaz
-                    Bien decorada con su texto descriptivo, mas botones que te llevan dichas recetas que desees aprender.`,
+    description: projectsDescTxt[1],
     src: "assets/images/proyectos/naturalFoods.PNG",
     gifSrc: "assets/gifs/NaturalFoods.gif"
   },
   {
-    titulo: "Education Page",
+    titulo: projectTitleTxt[2],
     technologies: [
       "SCSS", "HTML", "CSS"
     ],
-    description: `Un modelo de website sobre educación para niños, lleno de bastante estilo que invita invita a los 
-                    padres a ser mas responsables y amables con la crianza y educacion de sus hijos.`,
+    description: projectsDescTxt[2],
     src: "assets/images/proyectos/EducationPage2.PNG",
     gifSrc: "assets/gifs/EducationBoring.gif"
   },
   {
-    titulo: "Prototipo tienda de ventas",
+    titulo: projectTitleTxt[3],
     technologies: [
       "SCSS", "HTML", "CSS", "BOOTSTRAP", "ANGULAR"
     ],
-    description: `Un modelo de website que alude a ser un clon de Mercadolibre, al hacer click a un producto para comprar
-                    te llevara a la seccion donde se describe el precio especifico y demas del mismo.`,
+    description: projectsDescTxt[3],
     src: "assets/images/proyectos/ClonePrototypeShop.PNG",
     gifSrc: "assets/gifs/MercadoLibreClone.gif"
   },
   {
-    titulo: "Agencia de Marketing",
+    titulo: projectTitleTxt[4],
     technologies: [
       "CSS", "HTML"
     ],
-    description: `Pagina web sobre Marketing Digital, con animaciones smooth, diseño minimalista con colores llenos
-                   de vida agradables para la vista, botones con hover animado y buena organización del contenido.`,
+    description: projectsDescTxt[4],
     src: "assets/images/proyectos/AgentesWeb.PNG",
     gifSrc: "assets/gifs/AgenciaOK.gif"
   },
   {
-    titulo: "Portafolio simple",
+    titulo: projectTitleTxt[5],
     technologies: [
       "CSS", "HTML", "Responsive Design"
     ],
-    description: `Portafolio hecho bajo un modelo dado en Cadif1, cuyo propósito era ponernos a prueba sobre cómo
-                    Decorar y organizar correctamente el FrontPage, con animaciones de hover.`,
+    description: projectsDescTxt[5],
     src: "assets/images/proyectos/Portfolio1Template.PNG",
     gifSrc: "assets/gifs/PortfolioModel.gif"
   },
   {
-    titulo: "Modelo 2 de Portafolio",
+    titulo: projectTitleTxt[6],
     technologies: [
       "CSS", "HTML", "Responsive Design"
     ],
-    description: `Mi primer modelo de portafolio hecho bajo un modelo dado en Cadif1, decoración minimalista
-                    con una simple paleta de colores, texto amigable para la vista, y un buen ajuste de pantalla.`,
+    description: projectsDescTxt[6],
     src: "assets/images/proyectos/PortfolioTemplate3.PNG",
     gifSrc: "assets/gifs/PortfolioModel2.gif"
   }

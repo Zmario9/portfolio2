@@ -26,7 +26,7 @@
         </div>
     </article>
     <article id="thirdContainer">
-        <h2 id="projectsIndex">Proyectos</h2>
+        <h2 id="projectsIndex">{{thirdContTxt}}</h2>
         <div>
             <div class="projects" *ngFor="let project of projects;">
                 <img [src]="project.src" [alt]="project.titulo">
@@ -38,7 +38,7 @@
                             {{tech}}
                         </span>
                     </div>
-                    <button (click)="openModalProjects(project)">Vista previa</button>
+                    <button (click)="openModalProjects(project)">{{prevText}}</button>
                 </div>
             </div>
         </div>
@@ -49,22 +49,22 @@
         </div>
     </article>
     <article id="fifthContainer">
-        <h2>Contacto</h2>
+        <h2>{{fifthContH2}}</h2>
         <div id="formBackground">
-            <p id="contactScroll">¿Tienes alguna propuesta, pregunta o sólo quieres opinar sobre mi portafolio?</p>
-            <p>¡Adelante!</p>
+            <p id="contactScroll">{{fifthContTxt[0]}}</p>
+            <p>{{fifthContTxt[1]}}</p>
             <form id="formPortfolio" action="https://formspree.io/f/xyyqaadd" method="POST">
                 <div id="formText">
                     <div>
-                        <label for="username">Nombre</label>
+                        <label for="username">{{fifthContTxt[2]}}</label>
                         <input type="text" name="username" id="username" placeholder="Roy Hernandez" required>
                     </div>
                     <div>                
-                        <label for="usermail">Correo</label>
-                        <input type="email" name="usermail" id="usermail" placeholder="someoneelse@gmail.com" required>
+                        <label for="usermail">{{fifthContTxt[3]}}</label>
+                        <input type="email" name="usermail" id="usermail" placeholder="{{fifthContTxt[4]}}" required>
                     </div>
                 </div>
-                <textarea name="message" minlength="70" required placeholder="Hola!, me gustaria trabajar contigo para un proyecto..."></textarea>
+                <textarea name="message" minlength="70" required placeholder="{{fifthContTxt[5]}}"></textarea>
                 <button type="submit">Enviar<ion-icon name="return-up-forward-outline"></ion-icon></button>
             </form>
         </div>

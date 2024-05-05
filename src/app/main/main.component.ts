@@ -20,6 +20,10 @@ export class MainComponent {
   projects: myData.ProjectData[] = myData.projects;
   firstContainerTxt: string[] = myData.firstContainerTxt;
   secondContainerTxt: string[] = myData.secondContainerTxt;
+  thirdContTxt: string = myData.thirdContainerH2;
+  prevText: string = myData.previewTxt;
+  fifthContH2: string = myData.fifthContainerH2;
+  fifthContTxt: string[] = myData.fifthContainerText;
 
   constructor(private modalService: MdbModalService, private router: Router) {}
   ngOnInit(){
