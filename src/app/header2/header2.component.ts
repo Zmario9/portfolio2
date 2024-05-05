@@ -141,6 +141,7 @@ export class Header2Component {
   
   //MÉTODO DE SCROLLAJE
   goTo(place: string) {
+    console.log(`place: ${place}`)
     let burguer = $("#navMob");
     this.gotToH2(place);
     this.hamburguerOpen = false;
@@ -148,13 +149,16 @@ export class Header2Component {
   
   //MÉTODO QUE COMPLEMENTA AL MÉTODO DE SCROLLAJE
   gotToH2(value: Array<number>|string){
+    let arrayLang = myData.arrayHeaderNav;
+    let errMsgGoto = myData.errorMessage;
+    console.log(arrayLang);
     switch (value){
-      case "Inicio": this.scrollingTo([0,0]); break;
-      case "Proyectos": this.scrollingTo("thirdContainer"); break;
-      case "Contacto": this.scrollingTo("fifthContainer"); break;
-      case "Referencias": Swal.fire({
+      case arrayLang[0]: this.scrollingTo([0,0]); break;
+      case arrayLang[1]: this.scrollingTo("thirdContainer"); break;
+      case arrayLang[2]: this.scrollingTo("fifthContainer"); break;
+      case arrayLang[3]: Swal.fire({
         title: "Error",
-        text: "Lo siento, aun no esta disponible esta opcion. :(",
+        text: errMsgGoto,
         icon: "error",
         timer: 3000,
         showConfirmButton: false,
@@ -176,15 +180,16 @@ export class Header2Component {
   //MÉTODO PARA IR A MIS REDES SOCIALES.
   socialMedia(url: string, evento: MouseEvent){
     const targetElement = evento.target as HTMLElement;
+    let langDisc = myData.discordMsg;
     if(targetElement.getAttribute('name') != "logo-discord"){  
       window.location.href = url;  
     } else {
       Swal.fire({
         title: "Discord",
-        text: "Buscame como 'thelostmagician'.",
+        text: langDisc[0],
         icon: "info",
         confirmButtonColor: "#7142F0",
-        confirmButtonText: "Ir a Discord"
+        confirmButtonText: langDisc[1],
       }).then((result: { isConfirmed: boolean; isDenied: boolean; }) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {

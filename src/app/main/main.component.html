@@ -1,29 +1,23 @@
 <main>
     <article id="firstContainer">
         <div id="frontEndProfile">
-            <h1>Desarrollador Junior FrontEnd.</h1>
+            <h1>{{firstContainerTxt[0]}}</h1>
             <img src="assets/images/programming.png" alt="This is me">
             <!-- <span>El diseño, responsive y funcionalidad son mi prioridad! </span> -->
         </div>
         <div class="contentOneText colorAzul">
-            <h2>Sobre mí</h2>
+            <h2>{{firstContainerTxt[1]}}</h2>
             <p>
-                ¡Hola!, soy Magus, y soy 
-                un desarrollador FrontEnd con conocimiento de 
-                varias tecnologias que pueden hacerme capaz de maquetar y 
-                decorar páginas web en base a las necesidades del cliente.
+                {{firstContainerTxt[2]}}
             </p>
-            <h2>Cualidades</h2>
+            <h2>{{firstContainerTxt[3]}}</h2>
             <p>
-                Siempre dispuesto a trabajar en equipo, abierto a críticas con 
-                el único propósito de mejorar mi manera de trabajar y cómo dar 
-                soluciones a distintos problemas que se presenten durante el 
-                desarrollo de algún proyecto dado.
+                {{firstContainerTxt[4]}}
             </p>
         </div> 
     </article>
     <article id="secondContainer">
-        <h2>Tecnologías conocidas</h2>
+        <h2>{{secondContainerTxt}}</h2>
         <div>
             <div class="knowledges" *ngFor="let knows of conocimientos; let i = index">
                 <h2>{{knows.nombre}}</h2>

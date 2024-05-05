@@ -18,6 +18,8 @@ export class MainComponent {
   mainElement: JQuery<HTMLElement> = $("someClass");
   conocimientos: myData.NameSrc[] = myData.conocimientos;
   projects: myData.ProjectData[] = myData.projects;
+  firstContainerTxt: string[] = myData.firstContainerTxt;
+  secondContainerTxt: string[] = myData.secondContainerTxt;
 
   constructor(private modalService: MdbModalService, private router: Router) {}
   ngOnInit(){
