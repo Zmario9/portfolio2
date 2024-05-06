@@ -15,6 +15,7 @@ export var projectTitleTxt: string[];
 export var previewTxt: string;
 export var fifthContainerH2: string;
 export var fifthContainerText: string[];
+export var formSendTxt: string;
 //MODAL TRANSLATION
 
 export var modalTxt: string[];
@@ -87,6 +88,7 @@ if (langValue == "es-ES") {
     "correodealguienmas@gmail.com",
     "Hola!, me gustaria trabajar contigo para un proyecto..."
   ];
+  formSendTxt = "Enviar";
 } else {
   arrayHeaderNav = ["Home", "Projects", "Contact", "References"];
   errorMessage = "Sorry, this option is not available yet :(";
@@ -149,6 +151,7 @@ if (langValue == "es-ES") {
     "someoneelse@gmail.com",
     "Howdy!, I would like to work with you for a project..."
   ];
+  formSendTxt = "Send";
 }
 //Interfaces
 export interface NameSrc {

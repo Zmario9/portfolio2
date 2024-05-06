@@ -24,6 +24,7 @@ export class MainComponent {
   prevText: string = myData.previewTxt;
   fifthContH2: string = myData.fifthContainerH2;
   fifthContTxt: string[] = myData.fifthContainerText;
+  formSendText: string = myData.formSendTxt;
 
   constructor(private modalService: MdbModalService, private router: Router) {}
   ngOnInit(){
