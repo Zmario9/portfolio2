@@ -93,6 +93,11 @@ $--color-cuaterciario-main: linear-gradient(
 /* ESTRUCTURAS EN GENERAL PARA TODAS LAS VISTAS -------------------------------------------------------------------*/
 /* ESTRUCTURA */
 main {
+  .g-recaptcha{
+    margin: {
+      top: 1em;
+    }
+  }
   @extend %flexColumnNowrap, %centeredContent;
   #secondContainer,
   #thirdContainer,

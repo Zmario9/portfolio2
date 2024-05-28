@@ -7,6 +7,7 @@ import * as $ from 'jquery';
 import * as myData from '../page-data/page-data.module';
 //SweetAlert typeof para que no requiera el uso de any
 import Swal, {SweetAlertOptions} from 'sweetalert2';
+declare var grecaptcha: any;
 
 @Component({
   selector: 'app-main',
@@ -68,6 +69,17 @@ export class MainComponent {
 
 async function handleSubmit(this: HTMLFormElement, event: Event){
   event.preventDefault();
+  const captchaResponse = grecaptcha.getResponse();
+  if(!captchaResponse){
+    Swal.fire({
+      title: "Error...",
+      text: "Por favor confirma que no eres un robot.",
+      icon: "error",
+      timer: 3000,
+      showConfirmButton: false
+    })
+    return;
+  }
   const form = new FormData(this);
   // console.log("funciona");
   fetch(this.action,{
@@ -94,6 +106,7 @@ async function handleSubmit(this: HTMLFormElement, event: Event){
       showConfirmButton: false,
     });
   }
+ grecaptcha.reset();
  this.reset();
 }
 function reveal(){
