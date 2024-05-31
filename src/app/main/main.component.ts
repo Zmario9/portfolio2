@@ -29,7 +29,13 @@ export class MainComponent {
 
   constructor(private modalService: MdbModalService, private router: Router) {}
   ngOnInit(){
-    // console.log(myData.dataAlgo);
+    // console.log(myData.dataAlgo)
+    grecaptcha.render("recaptchaSec", {
+      sitekey: '6LfS1OopAAAAAJtXkfQoKFZBhA-k5dtU4p4xEkRD',
+      callback: function () {
+          console.log('recaptcha callback');
+      }
+  });
     this.mainElement = $("main");
     if(window.innerWidth > 1200){
       //console.log(this.mainElement.height());
