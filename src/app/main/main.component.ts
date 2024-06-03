@@ -16,7 +16,7 @@ declare var grecaptcha: any;
 })
 export class MainComponent {
   modalRef: MdbModalRef<ModalComponent> | null = null;
-  mainElement: JQuery<HTMLElement> = $("someClass");
+  mainElement: JQuery<HTMLElement> = $("main");
   conocimientos: myData.NameSrc[] = myData.conocimientos;
   projects: myData.ProjectData[] = myData.projects;
   firstContainerTxt: string[] = myData.firstContainerTxt;
@@ -29,14 +29,15 @@ export class MainComponent {
 
   constructor(private modalService: MdbModalService, private router: Router) {}
   ngOnInit(){
+    this.mainElement = $("main");
     // console.log(myData.dataAlgo)
     grecaptcha.render("recaptchaSec", {
       sitekey: '6LfS1OopAAAAAJtXkfQoKFZBhA-k5dtU4p4xEkRD',
       callback: function () {
           console.log('recaptcha callback');
       }
-  });
-    this.mainElement = $("main");
+    });
+
     if(window.innerWidth > 1200){
       //console.log(this.mainElement.height());
       //console.log($("header").height());
