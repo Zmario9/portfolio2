@@ -8,6 +8,7 @@ import * as myData from '../page-data/page-data.module';
 //SweetAlert typeof para que no requiera el uso de any
 import Swal, {SweetAlertOptions} from 'sweetalert2';
 declare var grecaptcha: any;
+var siteToken: string = '6LfS1OopAAAAAJtXkfQoKFZBhA-k5dtU4p4xEkRD';
 
 @Component({
   selector: 'app-main',
@@ -53,7 +54,7 @@ export class MainComponent {
     })
     try{
       grecaptcha.render("recaptchaSec", {
-        sitekey: '6LfS1OopAAAAAJtXkfQoKFZBhA-k5dtU4p4xEkRD',
+        sitekey: siteToken,
         callback: function () {
             console.log('recaptcha callback');
         }
