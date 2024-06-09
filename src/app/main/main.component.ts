@@ -31,13 +31,6 @@ export class MainComponent {
   ngOnInit(){
     this.mainElement = $("main");
     // console.log(myData.dataAlgo)
-    grecaptcha.render("recaptchaSec", {
-      sitekey: '6LfS1OopAAAAAJtXkfQoKFZBhA-k5dtU4p4xEkRD',
-      callback: function () {
-          console.log('recaptcha callback');
-      }
-    });
-
     if(window.innerWidth > 1200){
       //console.log(this.mainElement.height());
       //console.log($("header").height());
@@ -58,6 +51,16 @@ export class MainComponent {
         this.mainElement.css("margin-top", `0`);    
       }
     })
+    try{
+      grecaptcha.render("recaptchaSec", {
+        sitekey: '6LfS1OopAAAAAJtXkfQoKFZBhA-k5dtU4p4xEkRD',
+        callback: function () {
+            console.log('recaptcha callback');
+        }
+      });
+    } catch (e){
+      console.log("Atrapao!");
+    }
   }
   openModalProjects(object: myData.ProjectData){
     const eventAlt = object.gifSrc;
