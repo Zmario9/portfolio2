@@ -98,11 +98,13 @@ header {
     }
   }
   #bg-hambmenu {
+    display: flex;
+    position: absolute;
     width: 100vw;
     height: 100vh;
     background-color: rgba(31, 15, 77, 0.5);
-    position: absolute;
     bottom: -2vh;
+    // right: 0;
     right: 0;
     z-index: 80;
   }
@@ -227,9 +229,16 @@ header {
 }
 
 //------------------------------------------MEDIAS------------------------------------------------//
+@media screen and (max-width: 1600px) {
+  header {
+    right: 0;
+  }
+}
+
 @media screen and (max-width: 600px) {
   /* ESTRUCTURA */
   header {
+    width: auto;
     justify-content: end;
     align-items: center;
     padding: {
@@ -306,9 +315,12 @@ header {
   }
 }
 
+
+
 @media screen and (min-width: 601px) and (max-width: 1200px) {
   /* ESTRUCTURA */
   header {
+    width: auto;
     justify-content: end;
     align-items: center;
     padding: {
